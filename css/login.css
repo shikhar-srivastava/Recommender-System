@@ -1,0 +1,7 @@
+body, html {height:100%;}
+div.wrap {height:100%; overflow:hidden;}
+body {overflow: hidden; }
+
+#create-link {
+	font-size: 22px;
+}
