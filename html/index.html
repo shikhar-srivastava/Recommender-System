@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Recommendation System</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><i class="material-icons">thumb_up</i></a>
+      <ul class="right">
+        <li><button class="modal-trigger btn waves-effect light-blue lighten-1" data-target="login-modal">Login</button></li>
+      </ul>
+
+      <!--ul id="nav-mobile" class="side-nav">
+        <li><a href="login.html">Login</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a-->
+    </div>
+  </nav>
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Recommendation System</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">*insert caption here*</h5>
+      </div>
+      <!--div class="row center">
+        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+      </div-->
+      <br><br>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--Icon Section -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text" ><a href="music.html"><i class="material-icons">library_music</i></a></h2>
+              <h5 class="center"><a href="music.html" class="black-text">Music</a></h5>
+
+            <p class="light center-align">*insert catchy caption*</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">movie</i></h2>
+            <h5 class="center">Movies</h5>
+
+              <p class="light" align='center'><a href="movie.html" class="black-text">Grab some popcorn and find movies that you'll love.</a></p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">book</i></h2>
+              <h5 class="center"><a href="book.html" class="black-text">Books</a></h5>
+
+            <p class="light">Books books books books books books</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+
+    <div class="section">
+
+    </div>
+  </div>
+  <div id="login-modal" class="modal s8">
+    <div class="modal-content">
+	    <div class="row">
+	        <div class="input-field col s12">
+	           <i class="material-icons prefix">account_circle</i>
+	           <input autocomplete="off" type="text" id="username" class="mini-form-text-input validate input-text required-entry" title="username"/>
+	           <label for="username">Username</label>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="input-field col s12">
+	           <i class="material-icons prefix">lock</i>
+	           <input autocomplete="off" type="password" id="password" class="mini-form-text-input validate-password input-text required-entry" title="password"/>
+	           <label for="password">Password</label>
+	          </div>
+	        </div>
+	    </div>
+
+	      <div class="modal-action modal-footer">
+	      	<a class="cyan-lighten-3 waves-effect btn s4" type="submit"><i class="material-icons right">send</i>Login</a>
+	      </div> 
+    </div>
+  </div>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">*these are our details*</h5>
+          <p class="grey-text text-lighten-4">*insert details here*</p>
+
+
+        </div>
+        <!--div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div-->
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../js/materialize.js"></script>
+  <script src="../js/init.js"></script>
+  <script>
+	$(document).ready(function() {
+  	  $('.modal-trigger').leanModal({
+  	   dismissible: true,
+       opacity: .5,
+       in_duration: 300,
+       out_duration: 200
+	  });
+	});
+  </script>
+
+  </body>
+</html>
