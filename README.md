@@ -1,5 +1,3 @@
 # RecommendationFrameWork
 
-Use This: 
-
-git config --global http.proxy 172.16.19.10:80
+  ##Through this project, we wish to achieve an implementation of a Machine Learning Algorithm on Retrieval of Similar Data-Files through  User preferences....
