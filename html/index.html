@@ -7,14 +7,14 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="..\css\materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="..\css\style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><i class="material-icons">thumb_up</i></a>
       <ul class="right">
-        <li><button class="modal-trigger btn waves-effect light-blue lighten-1" data-target="login-modal">Login</button></li>
+        <li><button id="login-btn" class="modal-trigger btn waves-effect light-blue lighten-1" data-target="login-modal">Login</button></li>
       </ul>
 
       <!--ul id="nav-mobile" class="side-nav">
@@ -31,9 +31,6 @@
       <div class="row center">
         <h5 class="header col s12 light">*insert caption here*</h5>
       </div>
-      <!--div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-      </div-->
       <br><br>
 
     </div>
@@ -47,7 +44,7 @@
       <div class="row">
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center light-blue-text" ><a href="music.html"><i class="material-icons">library_music</i></a></h2>
+            <h2 class="center light-blue-text" ><a href="music.html"><i class="material-icons circle">library_music</i></a></h2>
               <h5 class="center"><a href="music.html" class="black-text">Music</a></h5>
 
             <p class="light center-align">*insert catchy caption*</p>
@@ -142,7 +139,7 @@
 
 
   <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../js/jquery-2.2.2.min.js"></script>
   <script src="../js/materialize.js"></script>
   <script src="../js/init.js"></script>
   <script>
@@ -151,7 +148,8 @@
   	   dismissible: true,
        opacity: .5,
        in_duration: 300,
-       out_duration: 200
+       out_duration: 200,
+       ready: function() { $('#login-btn').addClass("active"); }
 	  });
 	});
   </script>
