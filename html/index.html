@@ -79,25 +79,27 @@
   </div>
   <div id="login-modal" class="modal s8">
     <div class="modal-content">
-	    <div class="row">
-	        <div class="input-field col s12">
-	           <i class="material-icons prefix">account_circle</i>
-	           <input autocomplete="off" type="text" id="username" class="mini-form-text-input validate input-text required-entry" title="username"/>
-	           <label for="username">Username</label>
-	        </div>
-	    </div>
-	    <div class="row">
-	        <div class="input-field col s12">
-	           <i class="material-icons prefix">lock</i>
-	           <input autocomplete="off" type="password" id="password" class="mini-form-text-input validate-password input-text required-entry" title="password"/>
-	           <label for="password">Password</label>
-	          </div>
-	        </div>
-	    </div>
+	    <form>
+		    <div class="row">
+		        <div class="input-field col s12">
+		           <i class="material-icons prefix">account_circle</i>
+		           <input autocomplete="off" type="text" id="username" class="mini-form-text-input validate input-text required-entry" title="username"/>
+		           <label for="username">Username</label>
+		        </div>
+		    </div>
+		    <div class="row">
+		        <div class="input-field col s12">
+		           <i class="material-icons prefix">lock</i>
+		           <input autocomplete="off" type="password" id="password" class="mini-form-text-input validate-password input-text required-entry" title="password"/>
+		           <label for="password">Password</label>
+		          </div>
+		        </div>
+		    </div>
 
-	      <div class="modal-action modal-footer">
-	      	<a class="cyan-lighten-3 waves-effect btn s4" type="submit"><i class="material-icons right">send</i>Login</a>
-	      </div> 
+		    <div class="modal-action modal-footer">
+		    	<a class="cyan-lighten-3 waves-effect btn s4" type="submit"><i class="material-icons right">send</i>Login</a>
+		    </div>
+	    </form> 
     </div>
   </div>
 
@@ -132,7 +134,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      Made by <a class="orange-text text-lighten-3" href="#!">Jawahar and Shikar</a>
       </div>
     </div>
   </footer>
@@ -149,7 +151,7 @@
        opacity: .5,
        in_duration: 300,
        out_duration: 200,
-       ready: function() { $('#login-btn').addClass("active"); }
+       starting_top: '10%'
 	  });
 	});
   </script>
