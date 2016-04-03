@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;  
 
+
 public class LoginServlet extends HttpServlet {  
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)  
                            throws ServletException, IOException {  
         response.setContentType("text/html");  
@@ -27,10 +29,12 @@ public class LoginServlet extends HttpServlet {
         }
         else{  
             out.print("sorry, username or password error!");  
-            request.getRequestDispatcher("index.html").include(request, response);  
+           // request.getRequestDispatcher("index.html").include(request, response);  
         }  
           
         out.close();  
     }  
+
+   //<!-- Write doGet function to allow  such statements:  <a href="loginPage">TEST</a> that request Get function to work-->
   
 }
