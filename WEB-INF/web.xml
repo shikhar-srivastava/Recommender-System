@@ -5,12 +5,12 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
     version="2.4">
     <servlet>
-        <servlet-name>LoginServlet</servlet-name>
+        <servlet-name>oginServlet</servlet-name>
         <servlet-class>LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LoginServlet</url-pattern>
+        <servlet-name>oginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>CreateServlet</servlet-name>
