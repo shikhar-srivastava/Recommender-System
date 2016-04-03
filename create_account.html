@@ -15,12 +15,8 @@
     <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo"><i class="material-icons">thumb_up</i></a>
       <ul class="right">
         <li><a id="login-btn" class="modal-trigger waves-effect" data-target="login-modal">Login</a></li>
+        <li><a id="profile-name" class="waves-effect" onclick='logout();'>If you are seeing this, I must've screwed something up.</a></li><!--basically, you should never see this line, it is just a placeholder-->
       </ul>
-
-      <!--ul id="nav-mobile" class="side-nav">
-        <li><a href="login.html">Login</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a-->
     </div>
   </nav>
   <div class="container blue-text text-lighten-1">
@@ -81,29 +77,29 @@
 
     </div>
   </div>
-  <div id="login-modal" class="modal s8">
+  <div id="login-modal" class="modal">
     <div class="modal-content">
-      <form>
+      <form action="loginPage" method="post">
         <div class="row">
             <div class="input-field col s12">
                <i class="material-icons prefix">account_circle</i>
-               <input autocomplete="off" type="text" id="username" class="mini-form-text-input validate input-text required-entry" title="username"/>
+               <input autocomplete="off" type="text" id="username" class="mini-form-text-input validate input-text" required name="username"/>
                <label for="username">Username</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                <i class="material-icons prefix">lock</i>
-               <input autocomplete="off" type="password" id="password" class="mini-form-text-input validate-password input-text required-entry" title="password"/>
+               <input autocomplete="off" type="password" id="password" class="mini-form-text-input validate-password input-text required" required name="password"/>
                <label for="password">Password</label>
               </div>
-            </div>
         </div>
-
-        <div class="modal-action modal-footer">
-          <a class="red-lighten-3 waves-effect btn s4" type="submit"><i class="material-icons right">send</i>Login</a>
-        </div>
-      </form> 
+        <div class="row">
+          <div class="input-field col s3 offset-m9 offset-s6">
+            <input type="submit" class="btn waves-effect red" value="Login">
+          </div>
+      </div>
+    </form>
     </div>
   </div>
 
@@ -114,24 +110,7 @@
           <h5 class="white-text">Recommendation system</h5>
           <p class="grey-text text-lighten-4">Helps you find things that you'll love.</p>
         </div>
-        <!--div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div-->
+        
       </div>
     </div>
     <div class="footer-copyright">
@@ -145,25 +124,14 @@
   <!--  Scripts-->
   <script src="js/jquery-2.2.2.min.js"></script>
   <script src="js/materialize.js"></script>
+  <script src="js/login_logout.js"></script>
   <script src="js/init.js"></script>
   <script>
-  $(document).ready(function() {
-      $('.modal-trigger').leanModal({
-       dismissible: true,
-       opacity: .5,
-       in_duration: 300,
-       out_duration: 200,
-       starting_top: '10%'
+    $(document).ready(function() {
+      $('select').material_select();
     });
-  });
   </script>
-  <script>
-   $(document).ready(function() {
-    $('select').material_select();
-   });
-  </script>
-
   </body>
 </html>
 
-        
+         

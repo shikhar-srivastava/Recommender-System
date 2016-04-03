@@ -19,8 +19,10 @@ var check_uname = function() {
 	}
 	else {
 		var erck = getCookie('loginfailed');	//Error Cookie
-		Materialize.toast(erck, 4000);
-		location.reload();
+		if(erck.length>0) {
+			Materialize.toast(erck, 4000);
+			location.reload();
+		}
 	}	
 }
 var logout = function() {
