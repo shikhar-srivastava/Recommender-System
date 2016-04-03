@@ -15,7 +15,7 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
           
-        request.getRequestDispatcher("index.html").include(request, response);  
+        //request.getRequestDispatcher("index.html").include(request, response);  
           
         String name=request.getParameter("username");  
         String password=request.getParameter("password");  
@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
             response.addCookie(ck);  
         }
         else{  
-            out.print("sorry, username or password error!");  
+            out.print("Username and password do not match");  
            // request.getRequestDispatcher("index.html").include(request, response);  
         }  
           
