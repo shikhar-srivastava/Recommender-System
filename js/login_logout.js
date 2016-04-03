@@ -16,6 +16,11 @@ var check_uname = function() {
 		$('#login-btn').addClass('hide');
 		$('#profile-name').text(ck_value + '(Logout)');
 		$('#profile-name').removeClass('hide');
+	}
+	else {
+		var erck = getCookie('loginfailed');	//Error Cookie
+		Materialize.toast(erck, 4000);
+		location.reload();
 	}	
 }
 var logout = function() {
