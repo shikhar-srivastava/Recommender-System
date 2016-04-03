@@ -21,10 +21,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)  
                            throws ServletException, IOException {  
         response.setContentType("text/html");  
-        PrintWriter out=response.getWriter();  
-          
-        //request.getRequestDispatcher("index.html").include(request, response);  
-           
+        
         // Incase there is already a LOGIN-FAILED Cookie. It is deleted
         Cookie ck = new Cookie("loginfailed", "");
         ck.setMaxAge(0); 
@@ -33,19 +30,8 @@ public class LoginServlet extends HttpServlet {
         String name=request.getParameter("username");  
         String password=request.getParameter("password");  
         String errorMsg = null;
-        if(name == null || name.equals("")) {
-            errorMsg ="UsernameNull";
-        }
-        if(password == null || password.equals("")) {
-            errorMsg = "PasswordNull";
-        }
-        if(errorMsg != null) {
-            Cookie cookiee = new Cookie("loginfailed", errorMsg);
-            cookiee.setMaxAge(25*60); 
-            response.addCookie(cookiee);
-            response.sendRedirect("/index.html");
-        }
-        else {
+        
+        if((name!=null)&(pasword!=null)) {
           // JDBC driver name and database URL
             String JDBC_DRIVER="oracle.jdbc.driver.OracleDriver";  
             String DB_URL="jdbc:oracle:thin:@localhost:1521:XE";  //--___REQUIRES TESTING!!!____---
@@ -66,19 +52,17 @@ public class LoginServlet extends HttpServlet {
                 ps.setString(2, password);
                 rs = ps.executeQuery();
                  
-                if(rs != null && rs.next()) {    // Check if rs.next() Usage is right/.....
-                    // out.print("You are successfully logged in!");  
-                    // out.print("<br>Welcome, "+name);  
-                    Cookie cookey=new Cookie("username",name);  
+                if(rs != null && rs.next()) { 
+                    Cookie cookey = new Cookie("username",name);  
                     response.addCookie(cookey); 
-                    cookey.setMaxAge(25 * 60);             // 25 minutes.
+                    cookey.setMaxAge(25*60);             // 25 minutes.
                     response.sendRedirect("/index.html");
                 }
                 else {
-                    errorMsg="UserOrPasswordNotValid";
-                    Cookie cooki = new Cookie("loginfailed", errorMsg);
-                    cooki.setMaxAge(25*60); 
-                    response.addCookie(cooki);
+                    errorMsg="Username and Password do not match";  //changed to use this directly as the error message
+                    Cookie cookey = new Cookie("loginfailed", errorMsg);
+                    cookey.setMaxAge(60); 
+                    response.addCookie(cookey);
                     response.sendRedirect("/index.html");
                 }
            }
@@ -89,10 +73,15 @@ public class LoginServlet extends HttpServlet {
             finally {
                 if(rs!=null) rs.close();
                 if(ps!=null) ps.close();
-                if(out!=null) out.close(); 
             } 
-            
-        }     
+        }
+        else {
+            errorMsg="Unknown Error";  //because username and password cannot be null
+            Cookie cookey = new Cookie("loginfailed", errorMsg);
+            cookey.setMaxAge(60); 
+            response.addCookie(cookey);
+            response.sendRedirect("/index.html");   
+        }
     }  
 
    //<!-- Write doGet function to allow  such statements:  <a href="loginPage">TEST</a> that request Get function to work-->
