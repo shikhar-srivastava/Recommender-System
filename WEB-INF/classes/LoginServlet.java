@@ -31,10 +31,10 @@ public class LoginServlet extends HttpServlet {
         String password=request.getParameter("password");  
         String errorMsg = null;
         
-        if((name!=null)&(pasword!=null)) {
+        if((name!=null)&(password!=null)) {
           // JDBC driver name and database URL
             String JDBC_DRIVER="oracle.jdbc.driver.OracleDriver";  
-            String DB_URL="jdbc:oracle:thin:@localhost:1521:XE";  //--___REQUIRES TESTING!!!____---
+            String DB_URL="system@//localhost:1521/XE";  //--___REQUIRES TESTING!!!____---
                //  Database credentials
             String USER = "sys";
             String PASS = "2710";   //JAWAHAR: You will have to change this for your own database during testing
@@ -71,8 +71,11 @@ public class LoginServlet extends HttpServlet {
             }
 
             finally {
-                if(rs!=null) rs.close();
-                if(ps!=null) ps.close();
+            	try
+            	 {
+            	    if(rs!=null) rs.close();
+                	if(ps!=null) ps.close();
+            	  }catch(Exception e){e.printStackTrace();}
             } 
         }
         else {
@@ -83,9 +86,6 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/index.html");   
         }
     }  
-
-   //<!-- Write doGet function to allow  such statements:  <a href="loginPage">TEST</a> that request Get function to work-->
-   // ########  ^^^^^  we dont need it ########
   
 }
 
