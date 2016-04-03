@@ -4,8 +4,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Recommendation System</title>
-
-  <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css\materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css\style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -15,10 +13,10 @@
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><i class="material-icons">thumb_up</i></a>
       <ul class="right">
         <li><a id="login-btn" class="modal-trigger waves-effect" data-target="login-modal">Login</a></li>
+        <li><a id="profile-name" class="waves-effect" onclick='logout();'>If you are seeing this, I must've screwed something up.</a></li><!--basically, you should never see this line, it is just a placeholder-->
       </ul>
-	</div>
+  </div>
   </nav>
-
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
@@ -71,38 +69,34 @@
 
     </div>
   </div>
-  <!--div id="login-modal" class="modal s8">
-    <div class="modal-content"-->
-	    <form action="loginPage" method="post">
-		    <div class="row">
-		        <div class="input-field col s12">
-		           <i class="material-icons prefix">account_circle</i>
-		           <input autocomplete="off" type="text" id="username" class="mini-form-text-input validate input-text required-entry" name="username"/>
-		           <label for="username">Username</label>
-		        </div>
-		    </div>
-		    <div class="row">
-		        <div class="input-field col s12">
-		           <i class="material-icons prefix">lock</i>
-		           <input autocomplete="off" type="password" id="password" class="mini-form-text-input validate-password input-text required-entry" name="password"/>
-		           <label for="password">Password</label>
-		          </div>
-		    </div>
-		    <div class="row">
-		    	<div class="input-field col s6">
-			    	<a class="blue-text center-align" href="create_account.html" style="margin-left: 24px">New? Create account</a>
-			    </div>
-			    <!--<div class="input-field col s3 offset-s3">
-			       	<a class="waves-effect btn s4 red lighten-1" type="submit"><i class="material-icons right">send</i>
-              Login</a>
-			    </div>-->
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <form action="loginPage" method="post">
+        <div class="row">
+            <div class="input-field col s12">
+               <i class="material-icons prefix">account_circle</i>
+               <input autocomplete="off" type="text" id="username" class="mini-form-text-input validate input-text required-entry" name="username"/>
+               <label for="username">Username</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+               <i class="material-icons prefix">lock</i>
+               <input autocomplete="off" type="password" id="password" class="mini-form-text-input validate-password input-text required-entry" name="password"/>
+               <label for="password">Password</label>
+              </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <a class="blue-text center-align" href="create_account.html" style="margin-left: 24px">New? Create account</a>
+          </div>
           <div class="input-field col s3 offset-m9 offset-s6">
-              <input type="submit" class="btn waves-effect red" value="Login"></div>  <!--This Link works. The above Doesnt-->
-			</div>
-		</form>
-	<!-- Will work after doGet() function is made in LoginServlet	<a href="loginPage">TEST</a> -->
-    <!--/div>
-  </div-->
+            <input type="submit" class="btn waves-effect red" value="Login">
+          </div>
+      </div>
+    </form>
+    </div>
+  </div>
 
   <footer class="page-footer red darken-1">
     <div class="container">
@@ -111,24 +105,6 @@
           <h5 class="white-text">*these are our details*</h5>
           <p class="grey-text text-lighten-4">*insert details here*</p>
         </div>
-        <!--div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div-->
       </div>
     </div>
     <div class="footer-copyright">
@@ -139,22 +115,10 @@
   </footer>
 
 
-  <!--  Scripts-->
+
   <script src="js/jquery-2.2.2.min.js"></script>
   <script src="js/materialize.js"></script>
-  <!--script src="../js/init.js"></script-->
-  <!--script for login popup -->
-  <script>
-	$(document).ready(function() {
-  	  $('.modal-trigger').leanModal({
-  	   dismissible: true,
-       opacity: .5,
-       in_duration: 300,
-       out_duration: 200,
-       starting_top: '10%'
-	  });
-	});
-  </script>
-
+  <script src="js/login_logout.js"></script>
+  <script src="js/init.js"></script>
   </body>
 </html>
