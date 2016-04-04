@@ -18,4 +18,5 @@ $(document).ready(function() {
 	if(ck_value.length>0) { //cookie exists, therefore login must be have been succesful
 		$('#profile-name').text(ck_value + '  (Logout)');
 	}
+	else Materialize.Toast("ooops",2000);
 });
