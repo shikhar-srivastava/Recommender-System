@@ -14,7 +14,8 @@ var check_uname = function() {
 	var ck_value = getCookie('username');
 	if(ck_value.length>0) { //cookie exists, therefore login must be have been succesful
 		$('#login-btn').addClass('hide');
-		$('#profile-name').text(ck_value + '(Logout)');
+		Materialize.toast('', 4000);
+		$('#profile-name').text(ck_value + '  (Logout)');
 		$('#profile-name').removeClass('hide');
 	}
 	else {
@@ -27,7 +28,7 @@ var check_uname = function() {
 }
 var logout = function() {
 	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-	window.location.href="index.html";
+	location.reload();
 }
 $(document).ready(function() {
 	  check_uname();
