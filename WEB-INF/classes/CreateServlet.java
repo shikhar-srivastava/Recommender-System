@@ -38,7 +38,7 @@ public class CreateServlet extends HttpServlet
         {
             age="18";
         }
-        else if(gender==null)
+        else if(gender==null || gender=="")
         {
             Random r = new Random();
             if(r.nextInt(2)==0) gender="M";
