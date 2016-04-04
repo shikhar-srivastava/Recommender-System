@@ -80,6 +80,7 @@
                 </div>
               </div>
               <input type="text" name="data_type" value="movie" hidden/>
+              <input type="text" name="username" value="username" id="username"/>
             </form>
             <a class="btn red waves-effect tooltipped" data-position="bottom" data-delay="1000" data-tooltip="Add new field" id="add-field" onclick="addField();"><i class="material-icons circle white-text">add</i></a>
           </div>

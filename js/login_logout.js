@@ -41,6 +41,7 @@ var check_uname = function() {
 		enableLinks();
 		$('#profile-name').text(ck_value + '  (Logout)');
 		$('#profile-name').removeClass('hide');
+		Materialize.toast('Welcome ' + ck_value + '!',2000);
 	}
 	else {
 		var erck = getCookie('loginfailed');	//Error Cookie
@@ -58,5 +59,6 @@ var logout = function() {
 $(document).ready(function() {
 	  disableLinks();
 	  check_uname();
+
 
 });
