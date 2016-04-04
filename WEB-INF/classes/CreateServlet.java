@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 // Imports need to be checked
 import java.sql.*;  
-
+import java.io.*;
 /*Some Documentation:
         
             ERRORMESSAGEs in Cookies Types:
@@ -83,10 +83,10 @@ public class CreateServlet extends HttpServlet
                 else
                 {
                         ps_main = conn.prepareStatement("insert into USER_MAIN values(?,?,?,?)");
-                        ps_main.setString(1, name);
-                        ps_main.setString(2,password);
-                        ps_main.setString(3,age);
-                        ps_main.setString(4,gender);
+                        ps_main.setString(1,name);
+                        ps_main.setString(3,password);
+                        ps_main.setString(4,age);
+                        ps_main.setString(2,String.valueOf(gender.charAt(0)));
                         rs_main = ps_main.executeQuery();
                         if(rs_main==null) { 
                             errorMsg="Insertion into Table failed";  //changed to use this directly as the error message
