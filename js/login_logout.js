@@ -28,13 +28,17 @@ var check_uname = function() {
 		if(erck.length>0) {
 			document.cookie = "loginfailed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 			Materialize.toast(erck, 4000);
-			location.reload();
+			setTimeout(window.location.href="index.html",3000);
 		}
 	}	
 }
 var logout = function() {
 	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+<<<<<<< HEAD
 	window.location.href="index.html";
+=======
+	window.location.href="index.html"
+>>>>>>> origin/LetsWork
 }
 $(document).ready(function() {
 	  check_uname();

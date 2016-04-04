@@ -34,7 +34,7 @@
         </div>
         <div class="row">
           <div class="col s8 offset-s2">
-            <form action="execute" id="content-form" method="post">
+            <form action="GetResults" id="content-form" method="post">
               <div class="row">
                 <div class="col s2 offset-s5">
                   <input type="submit" class="btn waves-effect waves-blue right tooltipped" data-position="bottom" data-delay="700" data-tooltip="Submit when the fields are filled" value="Submit"/>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="input-field col s3">
                   <p class="range-field">
-                    <input type="range" id="rating-1" min="0" max="5" />
+                    <input type="range" id="rating-1" min="0" max="5" required/>
                   </p>
                 </div>
               </div>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="input-field col s3">
                   <p class="range-field">
-                    <input type="range" id="rating-1" min="0" max="5" />
+                    <input type="range" id="rating-1" min="0" max="5" required/>
                   </p>
                 </div>
               </div>
@@ -75,10 +75,11 @@
                 </div>
                 <div class="input-field col s3">
                   <p class="range-field">
-                    <input type="range" id="rating-1" min="0" max="5" />
+                    <input type="range" id="rating-1" min="0" max="5" required/>
                   </p>
                 </div>
               </div>
+              <input type="text" name="data_type" value="movie" hidden/>
             </form>
             <a class="btn red waves-effect tooltipped" data-position="bottom" data-delay="1000" data-tooltip="Add new field" id="add-field" onclick="addField();"><i class="material-icons circle white-text">add</i></a>
           </div>
@@ -87,12 +88,14 @@
       <div class="col s4">
         <br><br><br><br><br><br><br>
         <form action="search" method="get">
-          <p>If you are not sure what the movie title is search here</p>
-          <input type="text" class="grey lighten-5" name="search-field" id="search-field" size=255 required/>
-          <label for=""
-          <div class="row center">
+          <p>If you are not sure about what the movie title is search here</p>
+          <div class="input-field col s8">
+            <i class="material-icons prefix">search</i>
+            <input type="text" class="grey lighten-5" name="search-field" id="search-field" length="255" required/>
+          </div>
+          <div class="input-field col s4">
             <input type="submit" class="btn waves-effect waves-red right blue" value="Search"/>
-          </div> 
+          </div>
         </form>
       </div>
     <!--/div>
