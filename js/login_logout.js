@@ -28,13 +28,6 @@ var check_uname = function() {
 		if(erck.length>0) {
 			document.cookie = "loginfailed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 			Materialize.toast(erck, 4000);
-			/*$('.modal-trigger').leanModal({
-		       dismissible: true,
-		       opacity: .5,
-		       in_duration: 200,
-		       out_duration: 200,
-		       starting_top: '10%'
-		    });*/
 			location.reload();
 		}
 	}	
@@ -46,3 +39,7 @@ var logout = function() {
 $(document).ready(function() {
 	  check_uname();
 });
+
+function() {
+
+}
