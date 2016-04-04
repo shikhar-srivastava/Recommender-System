@@ -14,9 +14,8 @@ var logout = function() {
 	window.location.href="index.html";
 }
 $(document).ready(function() {
-	 var ck_value = getCookie('username');
+	var ck_value = getCookie('username');
 	if(ck_value.length>0) { //cookie exists, therefore login must be have been succesful
 		$('#profile-name').text(ck_value + '  (Logout)');
 	}
-	else Materialize.Toast("ooops",2000);
-});
+}
