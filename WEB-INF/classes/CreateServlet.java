@@ -12,9 +12,8 @@ import java.sql.*;
 /*Some Documentation:
         
             ERRORMESSAGEs in Cookies Types:
-                        1) "UsernameNull"
-                        2) "PasswordNull"
-                        3) "UserOrPasswordNotValid" 
+                        
+                        1) "loginfailed" 
 */
 
 public class CreateServlet extends HttpServlet {  
@@ -28,10 +27,12 @@ public class CreateServlet extends HttpServlet {
         response.addCookie(ck);
 
         String name=request.getParameter("username");  
-        String password=request.getParameter("password");  
+        String password=request.getParameter("password"); 
+        String age=request.getParameter("username");
+        String gender=request.getParameter("username"); 
         String errorMsg = null;
         
-        if((name!=null)&(password!=null)) {
+        if((name!=null)&(password!=null)&(age!null)&(gender!null)) {
           // JDBC driver name and database URL
            String JDBC_DRIVER="oracle.jdbc.driver.OracleDriver";  
             String DB_URL="jdbc:oracle:thin:@localhost:1521:XE";  //--___REQUIRES TESTING!!!____---
@@ -41,6 +42,8 @@ public class CreateServlet extends HttpServlet {
               //Change this BELOW to change the HTML file Format
             PreparedStatement ps = null;
             ResultSet rs = null;
+            PreparedStatement ps_main = null;
+            ResultSet rs_main = null;
             try{
                 // Register JDBC driver
                 Class.forName(JDBC_DRIVER);
@@ -51,26 +54,30 @@ public class CreateServlet extends HttpServlet {
                         {
                             System.out.println("Connected");
                         }
-                ps = conn.prepareStatement("select * from USER_MAIN where USER_ID=? and PASSWORD=?");
+                else
+                {
+                    System.out.println("Couldn't connect to Database");
+                }
+                ps = conn.prepareStatement("select * from USER_MAIN where USER_ID=?");
                 ps.setString(1, name);
-                ps.setString(2, password);
                 rs = ps.executeQuery();
                  
                 if(rs != null && rs.next()) { 
-                    Cookie cookey = new Cookie("username",name);  
-                    response.addCookie(cookey); 
-                    cookey.setMaxAge(25*60);             // 25 minutes.
-                    response.sendRedirect(request.getContextPath()+"/index.html");
-                    //System.out.println("User and password VALID!");
-                }
-                else {
-                    errorMsg="Username and Password do not match";  //changed to use this directly as the error message
-                    Cookie cookey = new Cookie("loginfailed", errorMsg);
+                      errorMsg="Username and Password do not match";  //changed to use this directly as the error message
+                    Cookie cookey = new Cookie("signupfailed", errorMsg);
                     cookey.setMaxAge(60); 
                     response.addCookie(cookey);
                     response.sendRedirect(request.getContextPath()+"/index.html");
                     //For testing purposer->
                     //System.out.println("User and password invalid!");
+                }
+                else {
+                  
+                     Cookie cookey = new Cookie("username",name);  
+                    response.addCookie(cookey); 
+                    cookey.setMaxAge(25*60);             // 25 minutes.
+                    response.sendRedirect(request.getContextPath()+"/index.html");
+                    //System.out.println("User and password VALID!");
                 }
            }
             catch(Exception e) {
