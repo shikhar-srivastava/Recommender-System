@@ -34,11 +34,7 @@ var check_uname = function() {
 }
 var logout = function() {
 	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-<<<<<<< HEAD
 	window.location.href="index.html";
-=======
-	window.location.href="index.html"
->>>>>>> origin/LetsWork
 }
 $(document).ready(function() {
 	  check_uname();
