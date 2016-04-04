@@ -52,12 +52,10 @@
                 <i class="material-icons small" style="margin-top:20px">face</i>
               </div>
               <div class="input-field col s7">
-                <select name="gender">
-                  <option value="" disabled selected>Choose your option</option>
-                  <option value="F">Female</option>
-                  <option value="M">Male</option>
-                </select>
-                <label>Gender</label>
+                <input type="radio" class="with-gap" id="male" name="gender" value="M"/>
+                <label for="male">Male</label>
+                <input type="radio" class="with-gap" id="female" name="gender" value="F"/>
+                <label for="female">Female</label>
               </div>
             </div>
             <div class="row">
@@ -123,7 +121,7 @@
 
   <!--  Scripts-->
   <script src="js/jquery-2.2.2.min.js"></script>
-  <script src="js/materialize.js"></script>
+  <script src="js/materialize.min.js"></script>
   <script src="js/login_logout.js"></script>
   <script>
     $(document).ready(function() {
@@ -134,7 +132,7 @@
        out_duration: 200,
        starting_top: '10%'
       });
-      $('select').material_select();
+      
     });
     </script>
   </body>
