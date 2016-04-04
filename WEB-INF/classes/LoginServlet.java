@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
                     response.addCookie(cookey); 
                     cookey.setMaxAge(25*60);             // 25 minutes.
                     response.sendRedirect(request.getContextPath()+"/index.html");
-                    System.out.println("User and password VALID!");
+                    //System.out.println("User and password VALID!");
                 }
                 else {
                     errorMsg="Username and Password do not match";  //changed to use this directly as the error message
@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
                     response.addCookie(cookey);
                     response.sendRedirect(request.getContextPath()+"/index.html");
                     //For testing purposer->
-                    System.out.println("User and password invalid!");
+                    //System.out.println("User and password invalid!");
                 }
            }
             catch(Exception e) {
