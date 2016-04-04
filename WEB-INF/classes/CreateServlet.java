@@ -24,11 +24,6 @@ public class CreateServlet extends HttpServlet
     {
        
         response.setContentType("text/html");  
-        
-        // Incase there is already a LOGIN-FAILED Cookie. It is deleted
-        Cookie ck = new Cookie("loginfailed", "");
-        ck.setMaxAge(0); 
-        response.addCookie(ck);
 
         String name=request.getParameter("username");  
         String password=request.getParameter("password"); 
@@ -77,8 +72,8 @@ public class CreateServlet extends HttpServlet
                 rs = ps.executeQuery();
                  
                 if(rs != null && rs.next()) { 
-                      errorMsg="User with given UserName already exists.";  //changed to use this directly as the error message
-                    Cookie cookey = new Cookie("signupfailed", errorMsg);
+                    errorMsg="User with given UserName already exists.";  //changed to use this directly as the error message
+                    Cookie cookey = new Cookie("signup", errorMsg);
                     cookey.setMaxAge(60); 
                     response.addCookie(cookey);
                     response.sendRedirect(request.getContextPath()+"/index.html");

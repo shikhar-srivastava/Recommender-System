@@ -55,6 +55,12 @@ var logout = function() {
 	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 	window.location.href="index.html";
 }
+
+var sign_check() {	//check the sign-up status
+	var msg = getCookie('signup');
+	Materialize.toast(msg,3000);
+}
+
 $(document).ready(function() {
 	  disableLinks();
 	  check_uname();
