@@ -37,7 +37,6 @@ var check_uname = function() {
 	var ck_value = getCookie('username');
 	if(ck_value.length>0) { //cookie exists, therefore login must be have been succesful
 		$('#login-btn').addClass('hide');
-		//Materialize.toast('', 4000);
 		enableLinks();
 		$('#profile-name').text(ck_value + '  (Logout)');
 		$('#profile-name').removeClass('hide');
@@ -59,6 +58,4 @@ var logout = function() {
 $(document).ready(function() {
 	  disableLinks();
 	  check_uname();
-
-
 });

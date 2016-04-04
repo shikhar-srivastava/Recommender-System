@@ -86,12 +86,13 @@
         </div>
       </div>
       <div class="col s4">
-        <br><br><br><br><br><br><br>
-        <form action="search" method="get">
+        <br><br><br><br><br><br><br><br>
+        <form action="searchPage" method="get">
           <p>If you are not sure about what the movie title is search here</p>
           <div class="input-field col s8">
             <i class="material-icons prefix">search</i>
-            <input type="text" class="grey lighten-5" name="search-field" id="search-field" length="255" required/>
+            <input type="text" class="grey lighten-5" name="query" id="search-field" length="255" required/>
+            <input type="text" name="cType" value="movie" hidden/>
           </div>
           <div class="input-field col s4">
             <input type="submit" class="btn waves-effect waves-red right blue" value="Search"/>
