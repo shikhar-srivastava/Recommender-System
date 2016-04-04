@@ -28,14 +28,13 @@ var check_uname = function() {
 		if(erck.length>0) {
 			document.cookie = "loginfailed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 			Materialize.toast(erck, 4000);
-			location.reload();
+			setTimeout(window.location.href="index.html",3000);
 		}
 	}	
 }
 var logout = function() {
 	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-	var Redirect = function(){window.location.href="index.html";};
-	setTimeout('Redirect()', 5000);
+	window.location.href="index.html"
 }
 $(document).ready(function() {
 	  check_uname();
