@@ -1,3 +1,8 @@
+var script = document.createElement('script');
+script.src = 'js/jquery-2.2.2.min.js';
+script.type = 'text/javascript';
+document.getElementsByTagName('head')[0].appendChild(script);
+
 var getCookie = function(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
