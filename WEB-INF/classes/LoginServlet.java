@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
         if((name!=null)&(password!=null)) {
           // JDBC driver name and database URL
            String JDBC_DRIVER="oracle.jdbc.driver.OracleDriver";  
-            String DB_URL="jdbc:oracle:thin:@localhost:1521:XE";  //--___REQUIRES TESTING!!!____---
+            String DB_URL="jdbc:oracle:thin:@localhost:1521:XE";
                //  Database credentials
             String USER = "system";
             String PASS = "2710";   //JAWAHAR: You will have to change this for your own database during testing

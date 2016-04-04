@@ -13,12 +13,16 @@ import java.sql.*;
         
             ERRORMESSAGEs in Cookies Types:
                         
-                        1) "loginfailed" 
+                        1) "signupfailed" 
+            SIGNUPSUCESS:
+                        1) "signupsuccess"
 */
 
-public class CreateServlet extends HttpServlet {  
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)  
-                           throws ServletException, IOException {  
+public class CreateServlet extends HttpServlet 
+{  
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException 
+    {
+       
         response.setContentType("text/html");  
         
         // Incase there is already a LOGIN-FAILED Cookie. It is deleted
@@ -28,14 +32,24 @@ public class CreateServlet extends HttpServlet {
 
         String name=request.getParameter("username");  
         String password=request.getParameter("password"); 
-        String age=request.getParameter("username");
-        String gender=request.getParameter("username"); 
+        String age=request.getParameter("age");
+        String gender=request.getParameter("gender"); 
+        if(age==null)
+        {
+            age="18";
+        }
+        else if(gender==null)
+        {
+            Random r = new Random();
+            if(r.nextInt(2)==0) gender="M";
+            else gender="F";
+        }
         String errorMsg = null;
+        String successMsg="Signup sucess";
         
-        if((name!=null)&(password!=null)&(age!null)&(gender!null)) {
           // JDBC driver name and database URL
            String JDBC_DRIVER="oracle.jdbc.driver.OracleDriver";  
-            String DB_URL="jdbc:oracle:thin:@localhost:1521:XE";  //--___REQUIRES TESTING!!!____---
+            String DB_URL="jdbc:oracle:thin:@localhost:1521:XE"; 
                //  Database credentials
             String USER = "system";
             String PASS = "2710";   //JAWAHAR: You will have to change this for your own database during testing
@@ -44,7 +58,7 @@ public class CreateServlet extends HttpServlet {
             ResultSet rs = null;
             PreparedStatement ps_main = null;
             ResultSet rs_main = null;
-            try{
+        try{
                 // Register JDBC driver
                 Class.forName(JDBC_DRIVER);
                 //Open the Connection
@@ -63,7 +77,7 @@ public class CreateServlet extends HttpServlet {
                 rs = ps.executeQuery();
                  
                 if(rs != null && rs.next()) { 
-                      errorMsg="Username and Password do not match";  //changed to use this directly as the error message
+                      errorMsg="User with given UserName already exists.";  //changed to use this directly as the error message
                     Cookie cookey = new Cookie("signupfailed", errorMsg);
                     cookey.setMaxAge(60); 
                     response.addCookie(cookey);
@@ -71,35 +85,45 @@ public class CreateServlet extends HttpServlet {
                     //For testing purposer->
                     //System.out.println("User and password invalid!");
                 }
-                else {
-                  
-                     Cookie cookey = new Cookie("username",name);  
-                    response.addCookie(cookey); 
-                    cookey.setMaxAge(25*60);             // 25 minutes.
-                    response.sendRedirect(request.getContextPath()+"/index.html");
-                    //System.out.println("User and password VALID!");
+                else
+                {
+                        ps_main = conn.prepareStatement("insert into USER_MAIN values(?,?,?,?)");
+                        ps_main.setString(1, name);
+                        ps_main.setString(2,password);
+                        ps_main.setString(3,age);
+                        ps_main.setString(4,gender);
+                        rs_main = ps_main.executeQuery();
+                         if(rs_main==null) { 
+                                 errorMsg="Insertion into Table failed";  //changed to use this directly as the error message
+                                    Cookie cookey = new Cookie("signupfailed", errorMsg);
+                                    cookey.setMaxAge(60); 
+                                    response.addCookie(cookey);
+                                    response.sendRedirect(request.getContextPath()+"/index.html");
+                    
+                          }
+                       if(errorMsg==null)
+                       {
+                        Cookie cookey = new Cookie("signupsuccess", successMsg);
+                                    cookey.setMaxAge(60); 
+                                    response.addCookie(cookey);
+                                    response.sendRedirect(request.getContextPath()+"/index.html");
+                       }
+
                 }
            }
             catch(Exception e) {
                 e.printStackTrace();
             }
 
-            finally {
+            finally 
+            {
                 try
                  {
                     if(rs!=null) rs.close();
                     if(ps!=null) ps.close();
+                    if(rs_main!=null) rs_main.close();
+                    if(ps_main!=null) ps_main.close();
                   }catch(Exception e){e.printStackTrace();}
             } 
-        }
-        else {
-            errorMsg="Unknown Error";  //because username and password cannot be null
-            Cookie cookey = new Cookie("loginfailed", errorMsg);
-            cookey.setMaxAge(60); 
-            response.addCookie(cookey);
-            response.sendRedirect(request.getContextPath()+"/index.html");
-        }
-    }  
-  
+    }
 }
-
