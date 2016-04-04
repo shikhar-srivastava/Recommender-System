@@ -56,7 +56,7 @@ var logout = function() {
 	window.location.href="index.html";
 }
 
-var sign_check() {	//check the sign-up status
+var signup_check=function() {	//check the sign-up status
 	var msg = getCookie('signup');
 	Materialize.toast(msg,3000);
 }
@@ -64,4 +64,5 @@ var sign_check() {	//check the sign-up status
 $(document).ready(function() {
 	  disableLinks();
 	  check_uname();
+	  signup_check();
 });
