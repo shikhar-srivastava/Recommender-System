@@ -33,10 +33,10 @@ public class LoginServlet extends HttpServlet {
         
         if((name!=null)&(password!=null)) {
           // JDBC driver name and database URL
-            String JDBC_DRIVER="oracle.jdbc.driver.OracleDriver";  
-            String DB_URL="system@//localhost:1521/XE";  //--___REQUIRES TESTING!!!____---
+           String JDBC_DRIVER="oracle.jdbc.driver.OracleDriver";  
+            String DB_URL="jdbc:oracle:thin:@localhost:1521:XE";  //--___REQUIRES TESTING!!!____---
                //  Database credentials
-            String USER = "sys";
+            String USER = "system";
             String PASS = "2710";   //JAWAHAR: You will have to change this for your own database during testing
               //Change this BELOW to change the HTML file Format
             PreparedStatement ps = null;
@@ -47,6 +47,10 @@ public class LoginServlet extends HttpServlet {
                 //Open the Connection
                 Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
                 //Preparing Query
+                if (conn != null) 
+                		{
+    						System.out.println("Connected");
+                		}
                 ps = conn.prepareStatement("select * from USER_MAIN where USER_ID=? and PASSWORD=?");
                 ps.setString(1, name);
                 ps.setString(2, password);
@@ -56,14 +60,17 @@ public class LoginServlet extends HttpServlet {
                     Cookie cookey = new Cookie("username",name);  
                     response.addCookie(cookey); 
                     cookey.setMaxAge(25*60);             // 25 minutes.
-                    response.sendRedirect("/index.html");
+                    response.sendRedirect(request.getContextPath()+"/index.html");
+                    System.out.println("User and password VALID!");
                 }
                 else {
                     errorMsg="Username and Password do not match";  //changed to use this directly as the error message
                     Cookie cookey = new Cookie("loginfailed", errorMsg);
                     cookey.setMaxAge(60); 
                     response.addCookie(cookey);
-                    response.sendRedirect("/index.html");
+                    response.sendRedirect(request.getContextPath()+"/index.html");
+                    //For testing purposer->
+                    System.out.println("User and password invalid!");
                 }
            }
             catch(Exception e) {
@@ -83,7 +90,7 @@ public class LoginServlet extends HttpServlet {
             Cookie cookey = new Cookie("loginfailed", errorMsg);
             cookey.setMaxAge(60); 
             response.addCookie(cookey);
-            response.sendRedirect("/index.html");   
+            response.sendRedirect(request.getContextPath()+"/index.html");
         }
     }  
   
