@@ -95,7 +95,7 @@
             <input type="text" name="cType" value="movie" hidden/>
           </div>
           <div class="input-field col s4">
-            <input type="submit" class="btn waves-effect waves-red right blue" value="Search"/>
+            <input type="submit" class="btn waves-effect waves-red right blue" target="_blank" value="Search"/>
           </div>
         </form>
       </div>

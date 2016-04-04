@@ -38,14 +38,12 @@ public class SearchServlet extends HttpServlet {
             else    System.out.println("Couldn't connect to Database");
             query = query.toLowerCase();
             query.replace(' ','%');
-            ps = conn.prepareStatement("select title from " + cType + " where lower(title) like %?%");
-            ps.setString(1, query);
+            ps = conn.prepareStatement("with lw as (select title,lower(title) as l from " + cType + ") select title from lw where l like '%"+query+"%'");
             rs = ps.executeQuery();
-            
-            while(rs.next()) {
-                out.println(rs.getString("title"));
-            }
-            
+            int i=1;
+            out.println("The results are :");
+            while(rs.next() & ((i++)<=10))	out.println(rs.getString("title"));
+            if (i==1) out.println("Sorry no results found.");
         }
         catch(Exception e) {
             e.printStackTrace(); //lazy
