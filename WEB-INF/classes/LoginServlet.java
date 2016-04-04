@@ -12,9 +12,8 @@ import java.sql.*;
 /*Some Documentation:
         
             ERRORMESSAGEs in Cookies Types:
-                        1) "UsernameNull"
-                        2) "PasswordNull"
-                        3) "UserOrPasswordNotValid" 
+                    
+                        1) "loginfailed" 
 */
 
 public class LoginServlet extends HttpServlet {  
