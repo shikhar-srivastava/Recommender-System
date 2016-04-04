@@ -51,7 +51,9 @@
       <div class="col s4">
         <br><br><br><br><br><br><br>
         <form action="search" method="get">
+          <p>If you are not sure what the movie title is search here</p>
           <input type="text" class="grey lighten-5" name="search-field" id="search-field" size=255 required/>
+          <label for=""
           <div class="row center">
             <input type="submit" class="btn waves-effect waves-red right blue" value="Search"/>
           </div> 
