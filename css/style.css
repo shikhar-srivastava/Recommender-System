@@ -12,3 +12,12 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
+.not-active {
+   pointer-events: none;
+   cursor: default;
+}
+
+body {
+	background-repeat: no-repeat;
+	background-size: 100%;
+}

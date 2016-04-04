@@ -3,6 +3,24 @@ script.src = 'js/jquery-2.2.2.min.js';
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
+var disableLinks = function() {
+	$('#mo_i').addClass('not-active');
+	$('#mo_t').addClass('not-active');
+	$('#mu_i').addClass('not-active');
+	$('#mu_t').addClass('not-active');
+	$('#bo_i').addClass('not-active');
+	$('#bo_t').addClass('not-active');
+}
+
+var enableLinks = function() {
+	$('#mo_i').removeClass('not-active');
+	$('#mo_t').removeClass('not-active');
+	$('#mu_i').removeClass('not-active');
+	$('#mu_t').removeClass('not-active');
+	$('#bo_i').removeClass('not-active');
+	$('#bo_t').removeClass('not-active');
+}
+
 var getCookie = function(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -19,7 +37,8 @@ var check_uname = function() {
 	var ck_value = getCookie('username');
 	if(ck_value.length>0) { //cookie exists, therefore login must be have been succesful
 		$('#login-btn').addClass('hide');
-		Materialize.toast('', 4000);
+		//Materialize.toast('', 4000);
+		enableLinks();
 		$('#profile-name').text(ck_value + '  (Logout)');
 		$('#profile-name').removeClass('hide');
 	}
@@ -37,5 +56,7 @@ var logout = function() {
 	window.location.href="index.html";
 }
 $(document).ready(function() {
+	  disableLinks();
 	  check_uname();
+
 });
