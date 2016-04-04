@@ -40,9 +40,45 @@
                   <input type="submit" class="btn waves-effect waves-blue right tooltipped" data-position="bottom" data-delay="700" data-tooltip="Submit when the fields are filled" value="Submit"/>
                 </div>
               </div>
-              <input type="text" class="grey lighten-5" name="con-field-1" id="con-field-1" size=255 required/>
-              <input type="text" class="grey lighten-5" name="con-field-2" id="con-field-2" size=255 required/>
-              <input type="text" class="grey lighten-5" name="con-field-3" id="con-field-3" size=255 required/>
+              <div class="divider blue"></div>
+              <div class="row center">
+                <div class="col s9">
+                  <h5 class="blue-text center-align">Movie Title</h5>
+                </div>
+                <div class="col s3">
+                  <h5 class="blue-text center-align">Rating</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s9">
+                  <input type="text" class="grey lighten-5" name="con-field-1" id="con-field-1" size=255 required/>
+                </div>
+                <div class="input-field col s3">
+                  <p class="range-field">
+                    <input type="range" id="rating-1" min="0" max="5" />
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s9">
+                  <input type="text" class="grey lighten-5" name="con-field-1" id="con-field-1" size=255 required/>
+                </div>
+                <div class="input-field col s3">
+                  <p class="range-field">
+                    <input type="range" id="rating-1" min="0" max="5" />
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s9">
+                  <input type="text" class="grey lighten-5" name="con-field-1" id="con-field-1" size=255 required/>
+                </div>
+                <div class="input-field col s3">
+                  <p class="range-field">
+                    <input type="range" id="rating-1" min="0" max="5" />
+                  </p>
+                </div>
+              </div>
             </form>
             <a class="btn red waves-effect tooltipped" data-position="bottom" data-delay="1000" data-tooltip="Add new field" id="add-field" onclick="addField();"><i class="material-icons circle white-text">add</i></a>
           </div>

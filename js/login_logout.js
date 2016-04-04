@@ -34,12 +34,9 @@ var check_uname = function() {
 }
 var logout = function() {
 	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-	window.location.href="index.html";
+	var Redirect = function(){window.location.href="index.html";};
+	setTimeout('Redirect()', 5000);
 }
 $(document).ready(function() {
 	  check_uname();
 });
-
-function() {
-
-}
