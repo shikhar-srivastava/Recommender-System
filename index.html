@@ -7,6 +7,13 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css\materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css\style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script type="text/javascript">
+    (function($){
+      $(function(){
+        $('.parallax').parallax();
+      });
+    })(jQuery);
+  </script>
 </head>
 <body>
   <nav class="blue darken-1" role="navigation">
@@ -65,8 +72,8 @@
     </div>
     <br><br>
 
-    <div class="section">
-
+    <div class="parallax-container">
+      <div class="parallax"><img="rsc"
     </div>
   </div>
   <div id="login-modal" class="modal">
@@ -115,9 +122,20 @@
   </footer>
 
 
-
+  
   <script src="js/jquery-2.2.2.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/login_logout.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.modal-trigger').leanModal({
+       dismissible: true,
+       opacity: .5,
+       in_duration: 200,
+       out_duration: 200,
+       starting_top: '10%'
+    });
+  });
+  </script>
   </body>
 </html>

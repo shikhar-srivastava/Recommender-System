@@ -127,6 +127,17 @@
   <script src="js/login_logout.js"></script>
   <script>
     $(document).ready(function() {
+      $('.modal-trigger').leanModal({
+       dismissible: true,
+       opacity: .5,
+       in_duration: 200,
+       out_duration: 200,
+       starting_top: '10%'
+    });
+  });
+  </script>
+  <script>
+    $(document).ready(function() {
       $('select').material_select();
     });
   </script>
