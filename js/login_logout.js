@@ -59,6 +59,7 @@ var logout = function() {
 var signup_check=function() {	//check the sign-up status
 	var msg = getCookie('signup');
 	Materialize.toast(msg,3000);
+	document.cookie = "signup=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 }
 
 $(document).ready(function() {

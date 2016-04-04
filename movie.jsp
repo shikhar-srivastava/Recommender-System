@@ -14,12 +14,10 @@
   <nav class="blue darken-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo"><i class="material-icons">thumb_up</i></a>
       <ul class="right">
-        <li><a id="profile-name" class="waves-effect" onclick='logout();'>If you are seeing this, I must've screwed something up.</a></li>
+        <li><a id="profile-name" class="waves-effect" onclick='logout();'>.</a></li>
       </ul>
   </div>
   </nav>
-  <!--div class="parallax-container">
-    <div class="parallax"><img src="rsc/bg.jpg"/-->
     <div class="row">
       <div class="col s8">
         <div class="row">
@@ -99,8 +97,6 @@
           </div>
         </form>
       </div>
-    <!--/div>
-    </div-->
   </div>
 
   <footer class="page-footer red darken-1">
