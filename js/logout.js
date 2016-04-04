@@ -11,7 +11,7 @@ var getCookie = function(cname) {
 
 var logout = function() {
 	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-	window.location="index.html";
+	window.location.href="index.html";
 }
 $(document).ready(function() {
 	 var ck_value = getCookie('username');

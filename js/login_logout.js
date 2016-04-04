@@ -21,6 +21,7 @@ var check_uname = function() {
 	else {
 		var erck = getCookie('loginfailed');	//Error Cookie
 		if(erck.length>0) {
+			document.cookie = "loginfailed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 			Materialize.toast(erck, 4000);
 			location.reload();
 		}
@@ -28,7 +29,7 @@ var check_uname = function() {
 }
 var logout = function() {
 	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-	location.reload();
+	window.location("index.html");
 }
 $(document).ready(function() {
 	  check_uname();

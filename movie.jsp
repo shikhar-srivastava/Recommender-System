@@ -83,7 +83,7 @@
 
   <script src="js/jquery-2.2.2.min.js"></script>
   <script src="js/materialize.js"></script>
-  <script src="js/logout.js"></script>
   <script src="js/init_content.js"></script>
+  <script src="js/logout.js"></script>
   </body>
 </html>
