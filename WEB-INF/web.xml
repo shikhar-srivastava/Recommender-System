@@ -18,7 +18,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>CreateServlet</servlet-name>
-        <url-pattern>/CreateServlet</url-pattern>
+        <url-pattern>/createPage</url-pattern>
     </servlet-mapping>
    <!-- <welcome-file-list>
         <welcome-file>index.html</welcome-file>
