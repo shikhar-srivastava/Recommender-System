@@ -45,7 +45,7 @@ public class CreateServlet extends HttpServlet
             else gender="F";
         }
         String errorMsg = null;
-        String successMsg="Signup sucess";
+        String successMsg="Signup sucess!";
         
           // JDBC driver name and database URL
            String JDBC_DRIVER="oracle.jdbc.driver.OracleDriver";  
@@ -93,20 +93,19 @@ public class CreateServlet extends HttpServlet
                         ps_main.setString(3,age);
                         ps_main.setString(4,gender);
                         rs_main = ps_main.executeQuery();
-                         if(rs_main==null) { 
-                                 errorMsg="Insertion into Table failed";  //changed to use this directly as the error message
-                                    Cookie cookey = new Cookie("signupfailed", errorMsg);
-                                    cookey.setMaxAge(60); 
-                                    response.addCookie(cookey);
-                                    response.sendRedirect(request.getContextPath()+"/index.html");
-                    
-                          }
+                        if(rs_main==null) { 
+                            errorMsg="Insertion into Table failed";  //changed to use this directly as the error message
+                            Cookie cookey = new Cookie("signup", errorMsg);
+                            cookey.setMaxAge(60); 
+                            response.addCookie(cookey);
+                            response.sendRedirect(request.getContextPath()+"/index.html");
+                        }
                        if(errorMsg==null)
                        {
-                        Cookie cookey = new Cookie("signupsuccess", successMsg);
-                                    cookey.setMaxAge(60); 
-                                    response.addCookie(cookey);
-                                    response.sendRedirect(request.getContextPath()+"/index.html");
+                        Cookie cookey = new Cookie("signup", successMsg);
+                        cookey.setMaxAge(60); 
+                        response.addCookie(cookey);
+                        response.sendRedirect(request.getContextPath()+"/index.html");
                        }
 
                 }
