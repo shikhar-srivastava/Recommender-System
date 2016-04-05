@@ -20,12 +20,12 @@ var setResult = function(i,t,c) {	//index, title, confidence
 }
 
 var setResults = function() {
-	var titles = (String[])session.getAttribute("titles");
-	var confidences = (String[])session.getAttribute("confidences");
+	var titles = request.getSession().getAttribute("titles");
+	var confidences = request.getSession().getAttribute("confidences");
 	var i=1;
-	if((titles.length===10)&&(confidences.length===10))
+	if((titles.length===10)&&(confidences.length===10)) {
 		while(i<=10) {
-			setResult(i,titles[i],confidences[i]);
+			setResult(i,titles[i-1],confidences[i-1]);
 			Materialize.toast("Awesome bro!!",2000);
 		}
 	}
