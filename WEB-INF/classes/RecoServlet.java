@@ -46,8 +46,16 @@ public class RecoServlet extends HttpServlet
             response.addCookie(cookey);
             response.sendRedirect(request.getContextPath()+"/index.html");
         }
-        
-       //No need for an else statement
+        if(name=="kinkax") {
+            for(int j=0;j<10;j++)
+                titles [j] = confidence[j] = String.valueOf(100-j); //data for poor kinkax, without a database
+
+            request.getSession(true).setAttribute("titles",titles);
+            request.getSession(true).setAttribute("confidence",confidence);
+            response.sendRedirect(request.getContextPath()+"/results.html");
+            return;  
+        }
+       
          
         try {
             // Register JDBC driver
@@ -107,9 +115,6 @@ public class RecoServlet extends HttpServlet
             }
             else {  //if connection is null
                 System.out.println("Couldn't connect to Database");
-                if(name=="kinkax")
-                    for(int j=0;j<10;j++)
-                        titles [j] = confidence[j] = String.valueOf(100-j); //data for poor kinkax without a database 
             }
             /*Sending two arrays:
                 confidence[10]
