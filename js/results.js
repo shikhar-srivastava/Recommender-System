@@ -16,9 +16,7 @@ var logout = function() {
 
 var setResult = function(i,t,c) {	//index, title, confidence
 	$('#result-'+i).text(t);
-	var p = c+'%';
-	$('.confidence-'+i).css('width',p);
-	$('.confidence-'+i).css('background-color','#f3989b');
+	$('#confidence-'+i).setAttribute('style','width: '+c+'%');
 }
 
 var setResults = function() {
