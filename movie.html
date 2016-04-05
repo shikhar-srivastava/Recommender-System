@@ -17,7 +17,7 @@
   </div>
   </nav>
     <div class="row">
-      <div class="col s8">
+      <div class="col s10 offset-s1">
         <div class="row">
           <div class="section" id="index-banner">
             <div class="container">
@@ -77,24 +77,26 @@
               </div>
               <input type="text" name="data_type" value="movie" hidden/>
             </form>
-            <a class="btn red waves-effect tooltipped" data-position="bottom" data-delay="1000" data-tooltip="Add new field" id="add-field" onclick="addField();"><i class="material-icons circle white-text">add</i></a>
+            <a class="btn red waves-effect tooltipped" data-position="bottom" data-delay="1000" data-tooltip="Add new field" id="add-field" onclick="addField();" style="margin-left: 10px"><i class="material-icons circle white-text">add</i></a>
           </div>
         </div>
       </div>
-      <div class="col s4">
-          <form action="searchPage" method="get">
-          <p>If you are not sure about what the movie title is search here</p>
-          <div class="input-field col s8">
+    </div>
+    <div class="row">
+      <div class="col s10 offset-s1">
+        <form action="searchPage" method="get">
+          <div class="input-field col s6 offset-s2">
             <i class="material-icons prefix">search</i>
             <input type="text" class="grey lighten-5" name="query" id="search-field" length="255" required/>
+            <label for="search-field">If you are not sure about what the movie title is, then search here</label>
             <input type="text" name="cType" value="movie" hidden/>
           </div>
-          <div class="input-field col s4">
+          <div class="input-field col s2">
             <input type="submit" class="btn waves-effect waves-red right blue" target="_blank" value="Search"/>
           </div>
         </form>
       </div>
-  </div>
+    </div>
 
   <footer class="page-footer red darken-1">
     <div class="container">
