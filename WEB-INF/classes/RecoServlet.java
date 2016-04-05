@@ -107,7 +107,9 @@ public class RecoServlet extends HttpServlet
             }
             else {  //if connection is null
                 System.out.println("Couldn't connect to Database");
-                for(int j=0;j<10;j++)  titles [j] = confidence[j] = String.valueOf(100-j); //data for poor kinkax without a database 
+                if(name=="kinkax")
+                    for(int j=0;j<10;j++)
+                        titles [j] = confidence[j] = String.valueOf(100-j); //data for poor kinkax without a database 
             }
             /*Sending two arrays:
                 confidence[10]
