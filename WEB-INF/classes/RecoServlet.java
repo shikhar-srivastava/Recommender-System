@@ -21,8 +21,8 @@ public class RecoServlet extends HttpServlet
         response.setContentType("text/html");  
         System.out.println("In RecoServlet");
         String cType = request.getParameter("cType");  
-        String titles[]= new String[10];
-        String confidence[]= new String[10];
+        String titles="";
+        String confidence="";
         String errorMsg = null;        
           // JDBC driver name and database URL
         String JDBC_DRIVER="oracle.jdbc.driver.OracleDriver";  
@@ -48,12 +48,17 @@ public class RecoServlet extends HttpServlet
         }
         if(name=="kinkax") {
             for(int j=0;j<10;j++)
-                titles [j] = confidence[j] = String.valueOf(100-j); //data for poor kinkax, without a database
-            System.out.println("Execting 'Kinkax'");
-            request.getSession(true).setAttribute("titles",titles);
-            request.getSession(true).setAttribute("confidence",confidence);
+               {
+               	 titles+= String.valueOf(100-j)+"|";
+               	 confidence+=String.valueOf(100-j)+"|";
+               } //data for poor kinkax, without a database
+            System.out.println("Exiting 'Kinkax'");
+            
+
+            //request.getSession(true).setAttribute("titles",titles);
+            //request.getSession(true).setAttribute("confidence",confidence);
             response.sendRedirect(request.getContextPath()+"/results.html");
-            return;  
+           //return;  
         }
        
          
@@ -84,7 +89,7 @@ public class RecoServlet extends HttpServlet
                 int i=0;
                 while(rs.next() & (i<10))
                 {
-                    titles[i]=rs.getString("title");
+ /*titles here->*/  titles+=rs.getString("title")+"|";
                     final_score[i]= (rs.getLong("final_score"));
                     i++;
                 }
@@ -110,18 +115,27 @@ public class RecoServlet extends HttpServlet
                 i=0;
                 while(i<10)
                 {
-                  confidence[i]=String.valueOf(final_score[i]);
+                    confidence+=String.valueOf(final_score[i])+"|";
+                	i++;
                 }
+
             }
             else {  //if connection is null
                 System.out.println("Couldn't connect to Database");
             }
-            /*Sending two arrays:
-                confidence[10]
-                titles[10]
+            /*Sending two Strings:
+            						1) confidence
+									2) titles
             */
-            request.getSession(true).setAttribute("titles",titles);
-            request.getSession(true).setAttribute("confidence",confidence);
+				 Cookie cookey1 = new Cookie("titles", titles);
+            cookey1.setMaxAge(60*25); 		//25 mins
+            response.addCookie(cookey1); 
+            Cookie cookey2 = new Cookie("confidence", confidence);
+            cookey2.setMaxAge(60*25); 
+            response.addCookie(cookey2);
+           // request.getSession(true).setAttribute("titles",titles);
+            //request.getSession(true).setAttribute("confidence",confidence);
+            
             response.sendRedirect(request.getContextPath()+"/results.html");
 
         }
