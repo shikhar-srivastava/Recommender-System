@@ -67,7 +67,7 @@ public class RecoServlet extends HttpServlet
                 System.out.println("Connected");
                                   
                 
-                ps = conn.prepareStatement("with c_user as (select "+cType+"_id,rating from user_"+cType+"where user_id=?),ranks as (select um.user_id,x."+cType+"_id,x.rating*um.rating as rank from c_user x, user_"+cType+" um where um."+cType+"_id in (select "+cType+"_id from c_user)),bonds as (select user_id, sum(rank) as bond from ranks group by user_id),r_pool as (select "+cType+"_id, rating*bond as rating007 from user_"+cType+" natural join bonds where "+cType+"_id not in (select "+cType+"_id from c_user)),d_pool as (select "+cType+"_id,sum(rating007) as final_score from r_pool group by "+cType+"_id) select title,final_score from d_pool natural join "+cType+"order by final_score desc");
+                ps = conn.prepareStatement("with c_user as (select "+cType+"_id,rating from user_"+cType+" where user_id=?),ranks as (select um.user_id,x."+cType+"_id,x.rating*um.rating as rank from c_user x, user_"+cType+" um where um."+cType+"_id in (select "+cType+"_id from c_user)),bonds as (select user_id, sum(rank) as bond from ranks group by user_id), r_pool as (select "+cType+"_id, rating*bond as rating007 from user_"+cType+" natural join bonds where "+cType+"_id not in (select "+cType+"_id from c_user)),d_pool as (select "+cType+"_id,sum(rating007) as final_score from r_pool group by "+cType+"_id) select title,final_score from d_pool natural join "+cType+" order by final_score desc");
                 ps.setString(1, name);
                 rs = ps.executeQuery();
                 System.out.println("After Query Execution"); 
