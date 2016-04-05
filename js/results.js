@@ -32,6 +32,8 @@ var setResults = function() {
 			setResult(i,titles[i-1],confidences[i-1]);
 			i++;
 		}
+		document.cookie = "titles=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+		document.cookie = "confidence=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 			Materialize.toast("Awesome bro!!",2000);
 	}
 	else Materialize.toast("not awesome bro!!",2000);
