@@ -87,7 +87,7 @@ public class RecoServlet extends HttpServlet
                 Long final_score[]= new Long[10];
                 
                 int i=0;
-                while(rs.next() & (i<10))
+               while(rs.next() & (i<10))
                 {
  /*titles here->*/  titles+=rs.getString("title")+"|";
                     final_score[i]= (rs.getLong("final_score"));
@@ -96,12 +96,14 @@ public class RecoServlet extends HttpServlet
                 Long min,max;
                 min=max=final_score[0];
                 i=0;
-                while(i<10)
+                max=final_score[0];
+                min=final_score[9];
+                /*while(i<10)
                 {
                     if(final_score[i]>max)max=final_score[i];
                     if(final_score[i]<min)min=final_score[i];
                     i++;
-                }
+                }*/
                 i=0;
                 int range = (int)(max-min);
                 
