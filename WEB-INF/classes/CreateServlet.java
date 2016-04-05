@@ -24,7 +24,7 @@ public class CreateServlet extends HttpServlet
     {
        
         response.setContentType("text/html");  
-        System.out.println("In CreateServlet");
+      //  System.out.println("In CreateServlet");
         String name=request.getParameter("username");  
         String password=request.getParameter("password"); 
         String age=request.getParameter("age");
@@ -70,7 +70,7 @@ public class CreateServlet extends HttpServlet
                 ps = conn.prepareStatement("select * from USER_MAIN where USER_ID=?");
                 ps.setString(1, name);
                 rs = ps.executeQuery();
-                System.out.println("After Query Execution"); 
+               // System.out.println("After Query Execution"); 
                 if(rs != null && rs.next()) { 
                     errorMsg="User with given UserName already exists.";  //changed to use this directly as the error message
                     Cookie cookey = new Cookie("signup", errorMsg);
