@@ -42,14 +42,8 @@ var check_uname = function() {
 		$('#profile-name').removeClass('hide');
 		Materialize.toast('Welcome ' + ck_value + '!',2000);
 	}
-	else {
-		var erck = getCookie('loginfailed');	//Error Cookie
-		if(erck.length>0) {
-			document.cookie = "loginfailed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-			Materialize.toast(erck, 4000);
-			setTimeout(window.location.href="index.html",3000);
-		}
-	}	
+	else	window.location.href="index.html";
+		
 }
 var logout = function() {
 	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
@@ -68,8 +62,16 @@ var reco_check=function() {	//check the sign-up status
 	document.cookie = "signup=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 }
 
+var login_fail = function() {
+	var erck = getCookie('loginfailed');	//Error Cookie
+	if(erck.length>0) {
+		document.cookie = "loginfailed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+		Materialize.toast(erck, 4000);
+}
+
 $(document).ready(function() {
 	  disableLinks();
 	  check_uname();
 	  signup_check();
+	  login_fail();
 });
