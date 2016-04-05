@@ -15,8 +15,8 @@ var logout = function() {
 }
 
 var setResult = function(i,t,c) {	//index, title, confidence
-	$('#result'+i).text(t);
-	$('#result'+i).setAttribute(style,'width: '+c+'%');
+	$('#result-'+i).text(t);
+	$('#confidence-'+i).setAttribute(style,'width: '+c+'%');
 }
 
 var setResults = function() {
@@ -42,6 +42,5 @@ $(document).ready(function() {
 	if(ck_value.length>0) { //cookie exists, therefore login must be have been succesful
 		$('#profile-name').text(ck_value + '  (Logout)');
 	}
-	var reco = getCookie('recofailed');
 	setResults();
 });
