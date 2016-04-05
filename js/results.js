@@ -39,7 +39,7 @@ var setResults = function() {
 
 $(document).ready(function() {
 	var ck_value = getCookie('username');
-	if(ck_value.length>0) { //cookie exists, therefore login must be have been succesful
+	if(ck_value.length>0) { //cookie exists, therefore login must be have been successful
 		$('#profile-name').text(ck_value + '  (Logout)');
 	}
 	setResults();
