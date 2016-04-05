@@ -20,17 +20,21 @@ var setResult = function(i,t,c) {	//index, title, confidence
 }
 
 var setResults = function() {
-	var titles = request.getSession().getAttribute("titles");
-	var confidences = request.getSession().getAttribute("confidences");
-	var i=1;
-	if((titles.length===10)&&(confidences.length===10)) {
-		while(i<=10) {
-			setResult(i,titles[i-1],confidences[i-1]);
+	var ts = getCookie('titles');	//ts ->TitleS
+	var cs = getCookie('confidence');	//ts ->ConfidenceS
+	if((ts!='')&&(cs!='') {
+		var titles = ts.split('|');
+		var confidences = cs.split('|');
+		var i=1;
+		if((titles.length===10)&&(confidences.length===10)) {
+			while(i<=10) {
+				setResult(i,titles[i-1],confidences[i-1]);
+			}
 			Materialize.toast("Awesome bro!!",2000);
 		}
+		else Materialize.toast("Sorry bro!!",2000);
 	}
-	else Materialize.toast("Sorry bro!!",2000);
-
+	else Materialize.toast("not awesome bro!!",2000);
 }
 
 $(document).ready(function() {
