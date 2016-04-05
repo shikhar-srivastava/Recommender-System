@@ -49,7 +49,7 @@ public class RecoServlet extends HttpServlet
         if(name=="kinkax") {
             for(int j=0;j<10;j++)
                 titles [j] = confidence[j] = String.valueOf(100-j); //data for poor kinkax, without a database
-
+            System.out.println("Execting 'Kinkax'");
             request.getSession(true).setAttribute("titles",titles);
             request.getSession(true).setAttribute("confidence",confidence);
             response.sendRedirect(request.getContextPath()+"/results.html");
@@ -58,7 +58,7 @@ public class RecoServlet extends HttpServlet
        
          
         try {
-            // Register JDBC driver
+         
             Class.forName(JDBC_DRIVER);
             //Open the Connection
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
