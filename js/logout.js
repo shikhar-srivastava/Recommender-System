@@ -13,9 +13,13 @@ var logout = function() {
 	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 	window.location.href="index.html";
 }
-$(document).ready(function() {
+
+var getProfile = function() {
 	var ck_value = getCookie('username');
 	if(ck_value.length>0) { //cookie exists, therefore login must be have been succesful
-		$('#profile-name').text(ck_value + '  (Logout)');
+		$('#profile-name').text(ck_value + '   (Logout)');
 	}
+}
+$(document).ready(function() {
+	getProfile();
 });
