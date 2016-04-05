@@ -22,7 +22,7 @@ var setResult = function(i,t,c) {	//index, title, confidence
 var setResults = function() {
 	var ts = getCookie('titles');	//ts ->TitleS
 	var cs = getCookie('confidence');	//ts ->ConfidenceS
-	if((ts!='')&&(cs!='') {
+	if((ts!='')&&(cs!='')) {
 		var titles = ts.split('|');
 		var confidences = cs.split('|');
 		var i=1;
