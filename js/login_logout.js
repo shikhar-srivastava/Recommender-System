@@ -42,7 +42,7 @@ var check_uname = function() {
 		$('#profile-name').removeClass('hide');
 		Materialize.toast('Welcome ' + ck_value + '!',2000);
 	}
-	else	window.location.href="index.html";
+	//else	window.location.href="index.html";
 		
 }
 var logout = function() {
@@ -68,7 +68,7 @@ var login_fail = function() {
 		document.cookie = "loginfailed=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 		Materialize.toast(erck, 4000);
 }
-
+}
 $(document).ready(function() {
 	  disableLinks();
 	  check_uname();
