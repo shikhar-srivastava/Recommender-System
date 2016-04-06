@@ -22,7 +22,7 @@ var setResult = function(i,t,c) {	//index, title, confidence
 }
 
 var setResults = function() {
-	var ts = getCookie('titles');	//ts ->TitleS
+	var ts = getCookie('titles');	//ts ->titles	title1|title2|.....|title10|
 	var cs = getCookie('confidence');	//ts ->ConfidenceS
 	Materialize.toast(ts,2000);
 	Materialize.toast(cs,2000);
