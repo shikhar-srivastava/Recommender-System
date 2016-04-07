@@ -129,6 +129,7 @@ public class RecoServlet extends HttpServlet
             						1) confidence
 									2) titles
             */
+				
 				 Cookie cookey1 = new Cookie("titles", titles);
             cookey1.setMaxAge(60*25); 		//25 mins
             response.addCookie(cookey1); 

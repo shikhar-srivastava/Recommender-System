@@ -36,6 +36,14 @@
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/searchPage</url-pattern>
     </servlet-mapping>
+     <servlet>
+        <servlet-name>InsertServlet</servlet-name>
+        <servlet-class>InsertServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertServlet</servlet-name>
+        <url-pattern>/insertPage</url-pattern>
+    </servlet-mapping>
    <!-- <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>-->
