@@ -33,7 +33,9 @@ public class InsertServlet extends HttpServlet
             i++;
             if(i>=10)break;
             cName[i]=request.getParameter("con-field-"+Integer.toString(i+1));
-            preferences[i]=Integer.parseInt(request.getParameter("rating-"+Integer.toString(i+1)));
+/*Exception here*/
+            preferences[i]=Integer.parseInt(request.getParameter("rating-"+Integer.toString(i+1)+"")); //To check for NULL pointers
+       
         }while(preferences[i]!=-1 && cName[i]!=null);
         // i= 1 more than no. of ratings
         int pref_count=i;
