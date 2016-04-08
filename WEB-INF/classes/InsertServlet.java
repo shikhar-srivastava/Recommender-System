@@ -26,14 +26,15 @@ public class InsertServlet extends HttpServlet
         String cType=request.getParameter("cType");  
         int preferences[]= new int[10];
         String cName[]= new String[10];
-        for(int j=0;j<10;j++){prefernces[j]=-1;cName[j]=null;}
+        for(int j=0;j<10;j++){preferences[j]=-1;cName[j]=null;}
         int i=-1;
         do
         {
             i++;
-            cName[i]=request.getParameter("con-field-"+String.toString(i+1));
-            preferences[i]=Integer.parseInt(request.getParameter("rating-"+String.toString(i+1)));
-        }while(preferences[i]!=-1 && cName[i]!=null && i<10);
+            if(i>=10)break;
+            cName[i]=request.getParameter("con-field-"+Integer.toString(i+1));
+            preferences[i]=Integer.parseInt(request.getParameter("rating-"+Integer.toString(i+1)));
+        }while(preferences[i]!=-1 && cName[i]!=null);
         // i= 1 more than no. of ratings
         int pref_count=i;
         String errorMsg = null;
@@ -53,8 +54,8 @@ public class InsertServlet extends HttpServlet
             response.sendRedirect(request.getContextPath()+"/index.html");
         }
         if(name=="kinkax") {
-    
-                System.out.println("Exiting 'Kinkax'");
+            //For our poor kinky ass brother. 
+                System.out.println("Exiting 'Kinkax' ;-)");
             response.sendRedirect(request.getContextPath()+"/results.html");
            //return;  
         }
@@ -70,8 +71,11 @@ public class InsertServlet extends HttpServlet
             ResultSet rs = null;
             PreparedStatement ps_check = null;
             ResultSet rs_check = null; 
-            PreparedStatement ps_main = null;
-            ResultSet rs_main = null;
+            Statement ins_pref = null;
+            PreparedStatement ps_ins = null;
+            ResultSet rs_ins = null;
+            PreparedStatement ps_get = null;
+            ResultSet rs_get = null;
         try{
                 // Register JDBC driver
                 Class.forName(JDBC_DRIVER);
@@ -86,16 +90,18 @@ public class InsertServlet extends HttpServlet
                 {
                     System.out.println("Couldn't connect to Database");
                 }
-                i=0
+                i=0;
+
                 while(i<pref_count)
                 {
-                    ps = conn.prepareStatement("select count(*) as count_val from "+cType+" where title = ?";
+                    ps = conn.prepareStatement("select count(*) as count_val from "+cType+" where title = '?'");
                     ps.setString(1,cName[i]);
                     rs = ps.executeQuery();
                        // System.out.println("After Query Execution"); 
-                    int count_val;  
+                    int count_val;
+                    String cType_id=null;  
 /*MIGHT CAUSE ERROR*/       if(rs== null ||((count_val=rs.getInt("count_val"))==0)) { 
-/*Change Error output?*/    errorMsg="Your choice of "+cType+"("+String.toString(i+1)+")"+" is unique Sir! It doesn't exist in our database.";  //changed to use this directly as the error message
+/*Change Error output?*/    errorMsg="Your choice of "+cType+"("+Integer.toString(i+1)+")"+" is unique Sir! It doesn't exist in our database.";  //changed to use this directly as the error message
                             Cookie cookey = new Cookie("insertfailed", errorMsg);
                             cookey.setMaxAge(60); 
                             response.addCookie(cookey);
@@ -105,7 +111,7 @@ public class InsertServlet extends HttpServlet
 
                        else if(count_val>1)
                          { 
-                            errorMsg="The "+cType+"("+String.toString(i+1)+")"+" name used is ambiguous!";  //changed to use this directly as the error message
+                            errorMsg="The "+cType+"("+Integer.toString(i+1)+")"+" name used is ambiguous!";  //changed to use this directly as the error message
                             Cookie cookey = new Cookie("insertfailed", errorMsg);
                             cookey.setMaxAge(60); 
                             response.addCookie(cookey);
@@ -114,56 +120,66 @@ public class InsertServlet extends HttpServlet
                         }
                         else 
                         {
-                              ps_check= conn.prepareStatement("select count(*) as count_check from user_"+cType+" natural join "+cType+" where title =? and user_id=?";
-                              ps_check.setString(1,cName[i]);
+                             ps_get= conn.prepareStatement("select distinct("+cType+"_id) from "+cType+" where title= '?'");
+                             ps_get.setString(1,cName[i]);
+                             rs_get = ps_get.executeQuery();    
+                             cType_id= rs_get.getString("distinct("+cType+"_id)");  
+
+
+                              ps_check= conn.prepareStatement("select count(*) as count_check from user_"+cType+" where "+cType+"_id = '?' and user_id='?'");
+                              ps_check.setString(1,cType_id);
                               ps_check.setString(2,name);
                               rs_check = ps_check.executeQuery();    
                               int val_check= rs_check.getInt("count_check");
-                              if(val_check!=0)
-                              {
-                                   errorMsg="You have already rated "+cType+"("+String.toString(i+1)+")"+" before!";  //changed to use this directly as the error message
+                                 if(val_check!=0)
+                                 {
+                                   /*errorMsg="You have already rated "+cType+"("+Integer.toString(i+1)+")"+" before!";  //changed to use this directly as the error message
                                     Cookie cookey = new Cookie("insertfailed", errorMsg);
                                     cookey.setMaxAge(60); 
                                     response.addCookie(cookey);
-                                    response.sendRedirect(request.getContextPath()+"/"+cType+".html");
-                              }
+                                    response.sendRedirect(request.getContextPath()+"/"+cType+".html");*/
 
-                                ps_main = conn.prepareStatement("insert into USER_"+cType+" values(?,?,?,?)");
-                                ps_main.setString(1,name);
-                                ps_main.setString(3,password);
-                                ps_main.setString(4,age);
-                                ps_main.setString(2,String.valueOf(gender.charAt(0)));
-                                rs_main = ps_main.executeQuery();
-                                if(rs_main==null) { 
-                                    errorMsg="Insertion into Table failed";  //changed to use this directly as the error message
-                                    Cookie cookey = new Cookie("insertfailed", errorMsg);
-                                    cookey.setMaxAge(60); 
-                                    response.addCookie(cookey);
-                                    response.sendRedirect(request.getContextPath()+"/index.html");
+                                    ins_pref= conn.createStatement();
+                                    String sql= "delete from user_"+cType+" where user_id='"+name+"' and "+cType+"_id ='"+cType_id+"'";
+                                    ins_pref.executeUpdate(sql);
                                 }
-                               else if(errorMsg==null)
-                               {
-                                Cookie cookey = new Cookie("signup", succe);
-                                cookey.setMaxAge(60*2); 
-                                response.addCookie(cookey);
-                                response.sendRedirect(request.getContextPath()+"/index.html");
-                               }
+                            
+                            ins_pref=null;
+                            ins_pref=conn.createStatement();
+                            String sql= "insert into user_"+cType+" values('"+name+"','"+cType_id+"',"+preferences[i]+"";
+                            ins_pref.executeUpdate(sql);
 
-                        }
-                   }
-                    catch(Exception e) {
-                        e.printStackTrace();
-                    }
+                          }
 
-                    finally 
-                    {
-                        try
-                         {
-                            if(rs!=null) rs.close();
-                            if(ps!=null) ps.close();
-                            if(rs_main!=null) rs_main.close();
-                            if(ps_main!=null) ps_main.close();
-                          }catch(Exception e){e.printStackTrace();}
-                    } 
+                     i++;
+                 }  //While loop ends here
+                                
+                // If control reaches here, then NO errors in queries. Hence, **Redirecting....
+                
+                    Cookie cookey = new Cookie("cType", cType);
+                    cookey.setMaxAge(60*2); 
+                    response.addCookie(cookey);
+                    response.sendRedirect(request.getContextPath()+"/redirect.html");
+                    
+
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
+
+        finally 
+        {
+            try
+             {
+                if(rs!=null) rs.close();
+                if(ps!=null) ps.close();
+                if(rs_check!=null) rs_check.close();
+                if(ps_check!=null) ps_check.close();
+                if(rs_get!=null) rs_get.close();
+                if(ps_get!=null) ps_get.close();
+                if(rs_ins!=null) rs_ins.close();
+                if(ps_ins!=null) ps_ins.close();
+              }catch(Exception e){e.printStackTrace();}
+        } 
     }
 }
