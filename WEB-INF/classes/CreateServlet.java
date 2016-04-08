@@ -51,8 +51,7 @@ public class CreateServlet extends HttpServlet
               //Change this BELOW to change the HTML file Format
             PreparedStatement ps = null;
             ResultSet rs = null;
-            PreparedStatement ps_main = null;
-            ResultSet rs_main = null;
+            Statement s_main=null;
         try{
                 // Register JDBC driver
                 Class.forName(JDBC_DRIVER);
@@ -82,20 +81,13 @@ public class CreateServlet extends HttpServlet
                 }
                 else
                 {
-                        ps_main = conn.prepareStatement("insert into USER_MAIN values(?,?,?,?)");
-                        ps_main.setString(1,name);
-                        ps_main.setString(3,password);
-                        ps_main.setString(4,age);
-                        ps_main.setString(2,String.valueOf(gender.charAt(0)));
-                        rs_main = ps_main.executeQuery();
-                        if(rs_main==null) { 
-                            errorMsg="Insertion into Table failed";  //changed to use this directly as the error message
-                            Cookie cookey = new Cookie("signup", errorMsg);
-                            cookey.setMaxAge(60); 
-                            response.addCookie(cookey);
-                            response.sendRedirect(request.getContextPath()+"/index.html");
-                        }
-                       else if(errorMsg==null)
+                        String sql ="insert into USER_MAIN values('"+name+"','"+String.valueOf(gender.charAt(0))+"','"+password+"',"+age+")";
+                            s_main=conn.createStatement();
+                            s_main.executeUpdate(sql);
+
+                        System.out.println("After AccountInsertion Query Execution");
+                        
+                        if(errorMsg==null)
                        {
                         Cookie cookey = new Cookie("signup", successMsg);
                         cookey.setMaxAge(60*2); 
@@ -115,8 +107,6 @@ public class CreateServlet extends HttpServlet
                  {
                     if(rs!=null) rs.close();
                     if(ps!=null) ps.close();
-                    if(rs_main!=null) rs_main.close();
-                    if(ps_main!=null) ps_main.close();
                   }catch(Exception e){e.printStackTrace();}
             } 
     }

@@ -32,6 +32,8 @@ public class RecoServlet extends HttpServlet
         String PASS = "2710";   //JAWAHAR: You will have to change this for your own database during testing
         PreparedStatement ps = null;
         ResultSet rs = null;
+        PreparedStatement ps_check = null;
+        ResultSet rs_check = null;
           //Checking if the user is already logged in using the Cookie
         Cookie[] cookies= request.getCookies();
         String name=null;
@@ -71,12 +73,22 @@ public class RecoServlet extends HttpServlet
             if (conn != null) {
                 System.out.println("Connected");
                                   
-                
+               /* ps_check=conn.prepareStatement("select count(*) as count_val from user_"+cType+" where user_id ='"+name+"'");
+                rs_check= ps_check.executeQuery();
+                int count_val=rs_check.getInt("count_val");
+	             if(count_val<1)
+	                {
+	               		errorMsg="User has mentioned no previous Preferences!";  //changed to use this directly as the error message
+                    	Cookie cookey = new Cookie("recofailed", errorMsg);	
+                   		 cookey.setMaxAge(60*2); 
+                   		 response.addCookie(cookey);
+                   		 response.sendRedirect(request.getContextPath()+"/"+cType+".html"); 	
+	                }*/
                 ps = conn.prepareStatement("with c_user as (select "+cType+"_id,rating from user_"+cType+" where user_id=?),ranks as (select um.user_id,x."+cType+"_id,x.rating*um.rating as rank from c_user x, user_"+cType+" um where um."+cType+"_id in (select "+cType+"_id from c_user)),bonds as (select user_id, sum(rank) as bond from ranks group by user_id), r_pool as (select "+cType+"_id, rating*bond as rating007 from user_"+cType+" natural join bonds where "+cType+"_id not in (select "+cType+"_id from c_user)),d_pool as (select "+cType+"_id,sum(rating007) as final_score from r_pool group by "+cType+"_id) select title,final_score from d_pool natural join "+cType+" order by final_score desc");
                 ps.setString(1, name);
                 rs = ps.executeQuery();
                 System.out.println("After Query Execution"); 
-                if(rs==null) 
+                if(rs==null || (!(rs.next()))) 
                 { 
                     errorMsg="User has mentioned no previous Preferences!";  //changed to use this directly as the error message
                     Cookie cookey = new Cookie("recofailed", errorMsg);
@@ -94,8 +106,8 @@ public class RecoServlet extends HttpServlet
                     i++;
                 }
                 Long min,max;
-                min=max=final_score[0];
-                i=0;
+                //min=max=final_score[0];
+                //i=0;
                 max=final_score[0];
                 min=final_score[9];
                 /*while(i<10)
@@ -152,6 +164,8 @@ public class RecoServlet extends HttpServlet
             {
                 if(rs!=null) rs.close();
                 if(ps!=null) ps.close();
+                if(rs_check!=null) rs_check.close();
+                if(ps_check!=null) ps_check.close();
             }catch(Exception e){e.printStackTrace();}
         } 
     }

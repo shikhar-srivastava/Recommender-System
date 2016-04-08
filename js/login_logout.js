@@ -74,4 +74,5 @@ $(document).ready(function() {
 	  check_uname();
 	  signup_check();
 	  login_fail();
+	  reco_check();
 });
