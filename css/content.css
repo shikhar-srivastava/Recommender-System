@@ -1,0 +1,46 @@
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+.not-active {
+   pointer-events: none;
+   cursor: default;
+}
+
+#index-banner .section {
+    top: 10%;
+}
+
+.text-outline {
+	text-shadow:
+	-1px -1px 0 #0000f0,
+	 1px -1px 0 #0000f0,
+	 -1px 1px 0 #0000f0,
+	  1px 1px 0 #0000f0;  
+}
+.parallax-container {
+  min-height: 410px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.5);
+  width: 100%;
+  padding-top: -10px;
+  margin: 0;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+body {
+	background-repeat: no-repeat;
+	background-size: 100%;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+flex: 1 0 auto;
+}

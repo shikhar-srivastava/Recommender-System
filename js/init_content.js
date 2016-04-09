@@ -41,4 +41,5 @@ $(document).ready(function() {
        starting_top: '10%'
     });
   insert_check();
+  $('.parallax').parallax();
   });
