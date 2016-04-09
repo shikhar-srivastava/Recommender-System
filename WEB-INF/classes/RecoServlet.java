@@ -145,13 +145,8 @@ public class RecoServlet extends HttpServlet
 									2) titles
             */
 				
-<<<<<<< HEAD
 				 Cookie cookey1 = new Cookie("titles", titles);
             cookey1.setMaxAge(60); 		//25 mins
-=======
-		    Cookie cookey1 = new Cookie("titles", titles);
-            cookey1.setMaxAge(60*25); 		//25 mins
->>>>>>> origin/LetsWork
             response.addCookie(cookey1); 
             Cookie cookey2 = new Cookie("confidence", confidence);
             cookey2.setMaxAge(60); 

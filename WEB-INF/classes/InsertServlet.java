@@ -12,7 +12,7 @@ import java.io.*;
 /*Some Documentation:
         
             ERRORMESSAGEs in Cookies Types:
-             1) insertfailed: NEED TO BE HANDLED IN BOTH CTYPE.HTML and INDEX.HTML!!!**__**__**__**     
+             1) insertfailed:    
              
 */
 
@@ -34,11 +34,17 @@ public class InsertServlet extends HttpServlet
             if(i>=10)break;
             cName[i]=request.getParameter("con-field-"+Integer.toString(i+1));
 /*Exception here*/
-            preferences[i]=Integer.parseInt(request.getParameter("rating-"+Integer.toString(i+1)+"")); //To check for NULL pointers
+            if(cName[i]==null)break;
+            System.out.println("cName["+i+"] : "+cName[i]);
+            String ps= request.getParameter("rating-"+(i+1));
+            if(ps==null)break;
+            preferences[i]=Integer.parseInt(ps);
+            System.out.println("preferences["+i+"] : "+preferences[i]);
        
-        }while(preferences[i]!=-1 && cName[i]!=null);
+        }while(true);
         // i= 1 more than no. of ratings
         int pref_count=i;
+        System.out.println("pref_count: "+ i);
         String errorMsg = null;
         Cookie[] cookies= request.getCookies();
         String name=null;
@@ -73,6 +79,7 @@ public class InsertServlet extends HttpServlet
             PreparedStatement ps_check = null;
             ResultSet rs_check = null; 
             Statement ins_pref = null;
+            Statement ins_pref_final = null;
             PreparedStatement ps_ins = null;
             ResultSet rs_ins = null;
             PreparedStatement ps_get = null;
@@ -82,10 +89,11 @@ public class InsertServlet extends HttpServlet
                 Class.forName(JDBC_DRIVER);
                 //Open the Connection
                 Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-                //Preparing Query
+                
                 if (conn != null) 
                         {
                             System.out.println("Connected");
+                           
                         }
                 else
                 {
@@ -95,24 +103,31 @@ public class InsertServlet extends HttpServlet
 
                 while(i<pref_count)
                 {
-                    ps = conn.prepareStatement("select count(*) as count_val from "+cType+" where title = '?'");
-                    ps.setString(1,cName[i]);
+                    errorMsg=null;
+                    ps = conn.prepareStatement("select count(*) as count_val from "+cType+" where title ='"+cName[i]+"'");
                     rs = ps.executeQuery();
-                       // System.out.println("After Query Execution"); 
-                    int count_val;
+                    System.out.println("After initial Ambiguity check Query Execution"); 
+                    int count_val=0;
                     String cType_id=null;  
-/*MIGHT CAUSE ERROR*/       if(rs== null ||((count_val=rs.getInt("count_val"))==0)) { 
-/*Change Error output?*/    errorMsg="Your choice of "+cType+"("+Integer.toString(i+1)+")"+" is unique Sir! It doesn't exist in our database.";  //changed to use this directly as the error message
+                        while(rs.next())
+                        {
+                             count_val=rs.getInt("count_val");
+                             break;
+                        }
+
+                            System.out.println("count_val: "+count_val);
+                           if(count_val==0) { 
+                             errorMsg="Your choice of "+cType+"("+Integer.toString(i+1)+") : "+cName[i]+" is unique Sir! It doesn't exist in our database.";  
                             Cookie cookey = new Cookie("insertfailed", errorMsg);
                             cookey.setMaxAge(60); 
                             response.addCookie(cookey);
                             response.sendRedirect(request.getContextPath()+"/"+cType+".html");
                                                 
-                        }
+                            }
 
                        else if(count_val>1)
                          { 
-                            errorMsg="The "+cType+"("+Integer.toString(i+1)+")"+" name used is ambiguous!";  //changed to use this directly as the error message
+                            errorMsg="The "+cType+"("+Integer.toString(i+1)+") : "+cName[i]+" name used is ambiguous!";  
                             Cookie cookey = new Cookie("insertfailed", errorMsg);
                             cookey.setMaxAge(60); 
                             response.addCookie(cookey);
@@ -121,17 +136,25 @@ public class InsertServlet extends HttpServlet
                         }
                         else 
                         {
-                             ps_get= conn.prepareStatement("select distinct("+cType+"_id) from "+cType+" where title= '?'");
-                             ps_get.setString(1,cName[i]);
+                        
+                             ps_get= conn.prepareStatement("select distinct("+cType+"_id) as dis_id from "+cType+" where title= '"+cName[i]+"'");
                              rs_get = ps_get.executeQuery();    
-                             cType_id= rs_get.getString("distinct("+cType+"_id)");  
+                             System.out.println("After cType_id Query Execution"); 
+                                    while(rs_get.next())
+                                {
+                                     cType_id= rs_get.getString("dis_id"); 
+                                     break;
+                                }
 
+                                System.out.println("cType_id: "+cType_id); 
 
-                              ps_check= conn.prepareStatement("select count(*) as count_check from user_"+cType+" where "+cType+"_id = '?' and user_id='?'");
-                              ps_check.setString(1,cType_id);
-                              ps_check.setString(2,name);
+                              ps_check= conn.prepareStatement("select count(*) as count_check from user_"+cType+" where "+cType+"_id = '"+cType_id+"' and user_id='"+name+"'");
                               rs_check = ps_check.executeQuery();    
-                              int val_check= rs_check.getInt("count_check");
+                              int val_check=0;
+                              while(rs_check.next()){val_check=rs_check.getInt("count_check");break;}
+                             
+                              System.out.println("count_check: "+val_check);
+                              System.out.println("After count_check Query Execution"); 
                                  if(val_check!=0)
                                  {
                                    /*errorMsg="You have already rated "+cType+"("+Integer.toString(i+1)+")"+" before!";  //changed to use this directly as the error message
@@ -142,13 +165,20 @@ public class InsertServlet extends HttpServlet
 
                                     ins_pref= conn.createStatement();
                                     String sql= "delete from user_"+cType+" where user_id='"+name+"' and "+cType+"_id ='"+cType_id+"'";
+                                    System.out.println("Just before Delete Statement");
                                     ins_pref.executeUpdate(sql);
+                                    /*try{
+                                        conn.commit();
+                                    }catch(Exception e){e.printStackTrace();}*/
+                                        
                                 }
-                            
-                            ins_pref=null;
-                            ins_pref=conn.createStatement();
-                            String sql= "insert into user_"+cType+" values('"+name+"','"+cType_id+"',"+preferences[i]+"";
-                            ins_pref.executeUpdate(sql);
+                                
+
+                            ins_pref_final=conn.createStatement();
+                            System.out.println("Before Final Insert Query..");
+                            String sql= "insert into user_"+cType+" values('"+name+"','"+cType_id+"',"+preferences[i]+")";
+                            ins_pref_final.executeUpdate(sql);
+                            System.out.println("Insertion Done!!"); 
 
                           }
 
