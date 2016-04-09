@@ -1,0 +1,22 @@
+<form action="recoPage" id="goToReco">
+<input type="text" name="cType" method="post" hidden/>
+</form>
+<script src="js/jquery-2.2.2.min.js"></script>
+<script type="text/javascript">
+  var getCookie = function(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+  }
+
+  $(document).ready(function() {
+    var c = getCookie("cType");
+    $('#goToReco').submit();
+  }); 
+
+</script>
