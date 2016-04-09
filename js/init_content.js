@@ -40,5 +40,5 @@ $(document).ready(function() {
        out_duration: 200,
        starting_top: '10%'
     });
-    
+  insert_check();
   });
