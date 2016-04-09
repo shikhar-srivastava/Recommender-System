@@ -56,7 +56,7 @@ public class InsertServlet extends HttpServlet
             response.sendRedirect(request.getContextPath()+"/index.html");
         }
         if(name=="kinkax") {
-            //For our poor kinky ass brother. 
+            //For our poor kinkax. 
                 System.out.println("Exiting 'Kinkax' ;-)");
             response.sendRedirect(request.getContextPath()+"/results.html");
            //return;  
@@ -67,8 +67,7 @@ public class InsertServlet extends HttpServlet
             String DB_URL="jdbc:oracle:thin:@localhost:1521:XE"; 
                //  Database credentials
             String USER = "system";
-            String PASS = "2710";   //JAWAHAR: You will have to change this for your own database during testing
-              //Change this BELOW to change the HTML file Format
+            String PASS = "2710";
             PreparedStatement ps = null;
             ResultSet rs = null;
             PreparedStatement ps_check = null;

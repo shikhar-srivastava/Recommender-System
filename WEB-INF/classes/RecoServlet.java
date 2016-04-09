@@ -41,6 +41,7 @@ public class RecoServlet extends HttpServlet
             if("username".equals(ck.getName()))
                 name=ck.getValue();
         }
+        System.out.println("User : " + name);
         if(name==null) {
             errorMsg="No User Logged In!";  //changed to use this directly as the error message
             Cookie cookey = new Cookie("recofailed", errorMsg);
@@ -48,19 +49,21 @@ public class RecoServlet extends HttpServlet
             response.addCookie(cookey);
             response.sendRedirect(request.getContextPath()+"/index.html");
         }
-        if(name=="kinkax") {
+        if(name.compareTo("kinkax")==0) {
             for(int j=0;j<10;j++)
                {
                	 titles+= String.valueOf(100-j)+"|";
-               	 confidence+=String.valueOf(100-j)+"|";
+               	 confidence+=String.valueOf(100-(2*j))+"|";
                } //data for poor kinkax, without a database
             System.out.println("Exiting 'Kinkax'");
-            
-
-            //request.getSession(true).setAttribute("titles",titles);
-            //request.getSession(true).setAttribute("confidence",confidence);
+            Cookie cookey1 = new Cookie("titles", titles);
+            cookey1.setMaxAge(60*25);       //25 mins
+            response.addCookie(cookey1); 
+            Cookie cookey2 = new Cookie("confidence", confidence);
+            cookey2.setMaxAge(60*25); 
+            response.addCookie(cookey2);
             response.sendRedirect(request.getContextPath()+"/results.html");
-           //return;  
+            return;
         }
        
          
@@ -142,8 +145,13 @@ public class RecoServlet extends HttpServlet
 									2) titles
             */
 				
+<<<<<<< HEAD
 				 Cookie cookey1 = new Cookie("titles", titles);
             cookey1.setMaxAge(60); 		//25 mins
+=======
+		    Cookie cookey1 = new Cookie("titles", titles);
+            cookey1.setMaxAge(60*25); 		//25 mins
+>>>>>>> origin/LetsWork
             response.addCookie(cookey1); 
             Cookie cookey2 = new Cookie("confidence", confidence);
             cookey2.setMaxAge(60); 
