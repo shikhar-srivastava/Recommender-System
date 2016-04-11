@@ -15,7 +15,7 @@ var logout = function() {
 }
 
 var setResult = function(i,t,c) {	//index, title, confidence
-	$('#result-'+i).text(t).attr("href","https://www.youtube.com/results?search_query="+t.replace(" ","+"));
+	$('#result-'+i).text(t).attr("href","http://www.imdb.com/find?q="+t.replace(" ","+")+"&s=all");
 	var p = c+'%';
 	$('.confidence-'+i).css('width',p);
 	$('.confidence-'+i).css('background-color','#f3989b');
