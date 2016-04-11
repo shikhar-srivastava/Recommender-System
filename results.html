@@ -27,124 +27,151 @@
       <div class="container">
         <div class="card">
           <div class="card-content">
-            <div class="row">  
-              <div class="col s6 offset-s2">
-                <h5 class="red-text center-align">Title</h5>
-              </div>
-              <div class="col s2 offset-s1">
-                  <h5 class="red-text">Confidence</h5>
-              </div>
-            </div>
-            <div class="row">  
-              <!--a class="blue-text align-left">1) </a-->
-              <div class="col s6 offset-s2">
-                <a id="result-1" href="#" class="blue-text align-left">.</a>
-              </div>
-              <div class="col s2 offset-s1">
-                <div class="progress">
-                  <div class="determinate confidence-1"></div>
+            <form action="exportPage" method="get">
+              <div class="row">  
+                <div class="col s6 offset-s2">
+                  <h5 class="red-text center-align">Title</h5>
+                </div>
+                <div class="col s2 offset-s1">
+                    <h5 class="red-text">Confidence</h5>
                 </div>
               </div>
-            </div>
-            <div class="row">  
-              <!--a class="blue-text align-left">2) </a-->
-              <div class="col s6 offset-s2">
-                <a id="result-2" class="blue-text align-left">.</a>
-              </div>
-              <div class="col s2 offset-s1">
-                <div class="progress">
-                  <div class="determinate confidence-2"></div>
+              <div class="row">  
+                <!--a class="blue-text align-left">1) </a-->
+                <div class="col s6 offset-s2">
+                  <input type="checkbox" name="export-1" id="export-1"/>
+                  <label for="export-1">.</label>
+                  <a id="result-1" href="#" class="blue-text align-left">.</a>
+                </div>
+                <div class="col s2 offset-s1">
+                  <div class="progress">
+                    <div class="determinate confidence-1"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">  
-              <!--a class="blue-text align-left">3) </a-->
-              <div class="col s6 offset-s2">
-                <a id="result-3" class="blue-text align-left">.</a>
-              </div>
-              <div class="col s2 offset-s1">
-                <div class="progress">
-                  <div class="determinate confidence-3"></div>
+              <div class="row">  
+                <!--a class="blue-text align-left">2) </a-->
+                <div class="col s6 offset-s2">
+                  <input type="checkbox" name="export-2" id="export-2"/>
+                  <label for="export-2">.</label>
+                  <a id="result-2" class="blue-text align-left">.</a>
+                </div>
+                <div class="col s2 offset-s1">
+                  <div class="progress">
+                    <div class="determinate confidence-2"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">  
-              <!--a class="blue-text align-left">4) </a-->
-              <div class="col s6 offset-s2">
-               <a id="result-4" class="blue-text align-left">.</a>
-              </div>
-              <div class="col s2 offset-s1">
-                <div class="progress">
-                  <div class="determinate confidence-4"></div>
+              <div class="row">  
+                <!--a class="blue-text align-left">3) </a-->
+                <div class="col s6 offset-s2">
+                  <input type="checkbox" name="export-3" id="export-3"/>
+                  <label for="export-3">.</label>
+                  <a id="result-3" class="blue-text align-left">.</a>
+                </div>
+                <div class="col s2 offset-s1">
+                  <div class="progress">
+                    <div class="determinate confidence-3"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">  
-              <!--a class="blue-text align-left">5) </a-->
-              <div class="col s6 offset-s2">
-                <a id="result-5" class="blue-text align-left">.</a>
-              </div>
-              <div class="col s2 offset-s1">
-                <div class="progress">
-                  <div class="determinate confidence-5"></div>
+              <div class="row">  
+                <!--a class="blue-text align-left">4) </a-->
+                <div class="col s6 offset-s2">
+                  <input type="checkbox" name="export-4" id="export-4"/>
+                  <label for="export-4">.</label>
+                 <a id="result-4" class="blue-text align-left">.</a>
+                </div>
+                <div class="col s2 offset-s1">
+                  <div class="progress">
+                    <div class="determinate confidence-4"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">  
-              <!--a class="blue-text align-left">6) </a-->
-              <div class="col s6 offset-s2">
-                <a id="result-6" class="blue-text align-left">.</a>
-              </div>
-              <div class="col s2 offset-s1">
-                <div class="progress">
-                  <div class="determinate confidence-6"></div>
+              <div class="row">  
+                <!--a class="blue-text align-left">5) </a-->
+                <div class="col s6 offset-s2">
+                  <input type="checkbox" name="export-5" id="export-5"/>
+                  <label for="export-5">.</label>
+                  <a id="result-5" class="blue-text align-left">.</a>
+                </div>
+                <div class="col s2 offset-s1">
+                  <div class="progress">
+                    <div class="determinate confidence-5"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">  
-              <!--a class="blue-text align-left">7) </a-->
-              <div class="col s6 offset-s2">
-                <a id="result-7" class="blue-text align-left">.</a>
-              </div>
-              <div class="col s2 offset-s1">
-                <div class="progress">
-                  <div class="determinate confidence-7"></div>
+              <div class="row">  
+                <!--a class="blue-text align-left">6) </a-->
+                <div class="col s6 offset-s2">
+                  <input type="checkbox" name="export-6" id="export-6"/>
+                  <label for="export-6">.</label>
+                  <a id="result-6" class="blue-text align-left">.</a>
+                </div>
+                <div class="col s2 offset-s1">
+                  <div class="progress">
+                    <div class="determinate confidence-6"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">  
-              <!--a class="blue-text align-left">8) </a-->
-              <div class="col s6 offset-s2">
-                <a id="result-8" class="blue-text align-left">.</a>
-              </div>
-              <div class="col s2 offset-s1">
-                <div class="progress">
-                  <div class="determinate confidence-8"></div>
+              <div class="row">  
+                <!--a class="blue-text align-left">7) </a-->
+                <div class="col s6 offset-s2">
+                  <input type="checkbox" name="export-7" id="export-7"/>
+                  <label for="export-7">.</label>
+                  <a id="result-7" class="blue-text align-left">.</a>
+                </div>
+                <div class="col s2 offset-s1">
+                  <div class="progress">
+                    <div class="determinate confidence-7"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">  
-              <!--a class="blue-text align-left">9) </a-->
-              <div class="col s6 offset-s2">
-                <a id="result-9" class="blue-text align-left">.</a>
-              </div>
-              <div class="col s2 offset-s1">
-                <div class="progress">
-                  <div class="determinate confidence-9"></div>
+              <div class="row">  
+                <!--a class="blue-text align-left">8) </a-->
+                <div class="col s6 offset-s2">
+                  <input type="checkbox" name="export-8" id="export-8"/>
+                  <label for="export-8">.</label>
+                  <a id="result-8" class="blue-text align-left">.</a>
+                </div>
+                <div class="col s2 offset-s1">
+                  <div class="progress">
+                    <div class="determinate confidence-8"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">  
-              <!--a class="blue-text">10) </a-->
-              <div class="col s6 offset-s2">
-                <a id="result-10" class="blue-text">.</a>
-              </div>
-              <div class="col s2 offset-s1">
-                <div class="progress">
-                  <div class="determinate confidence-10"></div>
+              <div class="row">  
+                <!--a class="blue-text align-left">9) </a-->
+                <div class="col s6 offset-s2">
+                  <input type="checkbox" name="export-9" id="export-9"/>
+                  <label for="export-9">.</label>
+                  <a id="result-9" class="blue-text align-left">.</a>
+                </div>
+                <div class="col s2 offset-s1">
+                  <div class="progress">
+                    <div class="determinate confidence-9"></div>
+                  </div>
                 </div>
               </div>
-            </div>
+              <div class="row">  
+                <!--a class="blue-text">10) </a-->
+                <div class="col s6 offset-s2">
+                  <input type="checkbox" name="export-10" id="export-10"/>
+                  <label for="export-10">.</label>
+                  <a id="result-10" class="blue-text">.</a>
+                </div>
+                <div class="col s2 offset-s1">
+                  <div class="progress">
+                    <div class="determinate confidence-10"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s2 offset-s9">
+                  <input type="submit" value="Export" class="btn red waves-effect waves-dark"/>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>

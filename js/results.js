@@ -37,8 +37,12 @@ var setResults = function() {
 			setResult(i,titles[i-1],confidences[i-1]);
 			i++;
 		}
-		document.cookie = "titles=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-		document.cookie = "confidence=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+		var d = new Date();
+	    d.setTime(d.getTime() + (120*1000));
+	    var expires = "expires="+d.toUTCString();
+	    document.cookie = "titles_export=" + ts + "; " + expires;
+		//document.cookie = "titles=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+		//document.cookie = "confidence=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 		Materialize.toast("Click on the titles to know more!",2000);
 	}
 	else Materialize.toast("not awesome bro!!",5000);

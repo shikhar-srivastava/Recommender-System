@@ -62,6 +62,8 @@ public class RecoServlet extends HttpServlet
             Cookie cookey2 = new Cookie("confidence", confidence);
             cookey2.setMaxAge(60*25); 
             response.addCookie(cookey2);
+            Cookie cookey3 = new Cookie("cType",cType);
+            response.addCookie(cookey3);
             response.sendRedirect(request.getContextPath()+"/results.html");
             return;
         }
@@ -146,13 +148,13 @@ public class RecoServlet extends HttpServlet
             */
 				
 				 Cookie cookey1 = new Cookie("titles", titles);
-            cookey1.setMaxAge(60); 		//25 mins
+            cookey1.setMaxAge(60);
             response.addCookie(cookey1); 
             Cookie cookey2 = new Cookie("confidence", confidence);
             cookey2.setMaxAge(60); 
             response.addCookie(cookey2);
             Cookie cookey3 = new Cookie("cType",cType);
-            cookey3.setMaxAge(60); 
+            //cookey3.setMaxAge(10*60); 
             response.addCookie(cookey3);
            // request.getSession(true).setAttribute("titles",titles);
             //request.getSession(true).setAttribute("confidence",confidence);
