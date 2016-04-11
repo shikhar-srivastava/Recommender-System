@@ -78,7 +78,9 @@ $(document).ready(function() {
 	if(uc.length>0) {
 		$('#profile-name').text(uc);
 	}
+	Materialize.toast(getCookie('username'),4000);
 	populateDetails();
 	populateTables();
 	$('table').addClass('striped');
+	$('.parallax').parallax();
 });
