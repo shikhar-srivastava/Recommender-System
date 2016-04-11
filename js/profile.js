@@ -14,44 +14,71 @@ var logout = function() {
 	window.location.href="index.html";
 }
 
-var setResult = function(i,t,c) {	//index, title, confidence
-	var link;
-	var cType = getCookie("cType");
-	if(cType==="movie") link = "http://www.imdb.com/find?q="+t.replace(" ","+")+"&s=all";
-	else if(cType==="music") link = "https://www.youtube.com/results?search_query="+t.replace(" ","+");
-	else if(cType==="book") link = "https://www.google.com/search?tbm=bks&q="+t.replace(" ","+");
-	$('#result-'+i).text(t).attr("href",link);
-	var p = c+'%';
-	$('.confidence-'+i).css('width',p);
-	$('.confidence-'+i).css('background-color','#f3989b');
+function addTable(d,col1,col2) {
+	var myTableDiv = document.getElementById(d);
+	var table = document.createElement('TABLE');
+	var tableHead = document.createElement('THEAD');
+	var tableBody = document.createElement('TBODY');
+	
+	table.appendChild(tableBody);
+	var heading=["Tilte","Rating"];
+	//TABLE COLUMNS
+	var tr = document.createElement('TR');
+	for (i = 0; i < heading.length; i++) {
+	    var th = document.createElement('TH');
+	    th.appendChild(document.createTextNode(heading[i]));
+	    tr.appendChild(th);
+	}
+	tableHead.appendChild(tr);
+	
+	//TABLE ROWS
+	for (i = 0; i < col1.length; i++) {
+	    var tr = document.createElement('TR');
+        var td1 = document.createElement('TD');
+        var td2 = document.createElement('TD');
+        td1.appendChild(document.createTextNode(col1[i]));
+        td2.appendChild(document.createTextNode(col2[i]));
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tableBody.appendChild(tr);
+	}
+	myTableDiv.appendChild(table);
 }
 
-var setResults = function() {
-	var ts = getCookie('titles');	//ts ->TitleS
-	var cs = getCookie('confidence');	//ts ->ConfidenceS
-	if((ts!='')&&(cs!='')) {
-		var titles = ts.split('|');
-		var confidences = cs.split('|');
-		var i=1;
-		while(i<=10) {
-			setResult(i,titles[i-1],confidences[i-1]);
-			i++;
-		}
-		var d = new Date();
-	    d.setTime(d.getTime() + (120*1000));
-	    var expires = "expires="+d.toUTCString();
-	    document.cookie = "titles_export=" + ts + "; " + expires;
-		//document.cookie = "titles=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-		//document.cookie = "confidence=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-		Materialize.toast("Click on the titles to know more!",2000);
+var populateTables = function() {
+	var tc = getCookie("pref");
+	var rc = getCookie("ratings");
+	document.cookie = "pref=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+	document.cookie = "ratings=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+	tc="SomeMovie|SomeOtherMovie|YetAnotherMovie,SomeSong,SomeBook|SomeOtherBook";
+	rc="5|4|5,5,2|5"
+	if(tc!=""&&rc!="") {
+		var titles = tc.split(',');
+		var ratings = rc.split(',');
+		addTable("movie-card",titles[0].split('|'),ratings[0].split('|'));
+		addTable("music-card",titles[1].split('|'),ratings[1].split('|'));
+		addTable("book-card",titles[2].split('|'),ratings[2].split('|'));
 	}
-	else Materialize.toast("not awesome bro!!",5000);
+	else {
+		$('#preferences-section').addClass('hide');
+		Materialize.toast("No previous preferences!",5000);
+	}
+}
+
+var populateDetails = function() {
+	var dc = getCookie("details");
+	var deets = dc.split(',');
+	$('#userid').text(deets[0]);
+	$('#age').text(deets[1]);
+	$('#gender').text(deets[2]);
 }
 
 $(document).ready(function() {
-	var ck_value = getCookie('username');
-	if(ck_value.length>0) { //cookie exists, therefore login must be have been successful
-		$('#profile-name').text(ck_value);
+	var uc = getCookie('username');
+	if(uc.length>0) {
+		$('#profile-name').text(uc);
 	}
-	setResults();
+	populateDetails();
+	populateTables();
+	$('table').addClass('striped');
 });

@@ -8,47 +8,107 @@
   <link href="css\materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css\profile.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-<body background="rsc/sea.jpg">
-  <nav class="blue darken-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo"><i class="material-icons">thumb_up</i></a>
-      <ul class="right">
-        <li><a id="profile-name" class="waves-effect" href="profile.html">.</a></li>
-        <li><a id="logout"class="waves-effect" onclick='logout();'>Logout</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <div class="section">
-    <div class="container">
-      <div class="card">
-        <div class="card-content">
-        
+<body background="rsc/sea.jpg" style="background-width: 100%;">
+<nav class="blue darken-1" role="navigation">
+  <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo"><i class="material-icons">thumb_up</i></a>
+    <ul class="right">
+      <li><a id="profile-name" class="waves-effect" href="profile.html">.</a></li>
+      <li><a id="logout"class="waves-effect" onclick='logout();'>Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<br>
+<div class="section">
+  <div class="container">
+    <div class="card">
+      <div class="card-content" id="user-card">
+        <div class="container">
+          <h4 class="center-align">User details</h4>
+          <div class="row">
+            <div class="col s6">
+              <h5>Username : </h5>
+            </div>
+            <div class="col s6">
+              <h5 id="userid">.</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s6">
+              <h5>Age : </h5>
+            </div>
+            <div class="col s6">
+              <h5 id="age">.</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s6">
+              <h5>Gender : </h5>
+            </div>
+            <div class="col s6">
+              <h5 id="gender">.</h5>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <footer class="page-footer red darken-1">
+</div>
+<div id="preferences-section">
+  <div class="section">
     <div class="container">
-      <div class="row">
-        <div class="col l6 s12 offset-l8">
-          <h5 class="white-text">Recommendation system</h5>
-          <p class="grey-text text-lighten-4">Helps you find things that you'll love.</p>
+      <div class="card">
+        <div class="card-content">
+          <div class="container" id="movie-card">
+            <h4 class="center-align">Movie Preferences</h4>
+          </div>
         </div>
       </div>
     </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="red-text text-lighten-3" href="#!">Jawahar and Shikhar</a>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="card">
+        <div class="card-content">
+          <div class="container" id="music-card">
+          <h4 class="center-align">Music Preferences</h4>
+          
+        </div>
       </div>
     </div>
-  </footer>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="card">
+        <div class="card-content">
+          <div class="container" id="book-card">
+          <h4 class="center-align">Book Preferences</h4>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="page-footer red darken-1">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12 offset-l8">
+        <h5 class="white-text">Recommendation system</h5>
+        <p class="grey-text text-lighten-4">Helps you find things that you'll love.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    Made by <a class="red-text text-lighten-3" href="#!">Jawahar and Shikhar</a>
+    </div>
+  </div>
+</footer>
 
 
 
-  <script src="js/jquery-2.2.2.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/logout.js"></script>
-  <script src="js/profile.js"></script>
-  </body>
+<script src="js/jquery-2.2.2.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/logout.js"></script>
+<script src="js/profile.js"></script>
+</body>
 </html>
