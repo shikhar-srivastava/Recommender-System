@@ -72,19 +72,13 @@ public class UserServlet extends HttpServlet {
                 titles+=",";
                 ratings+=",";
 
-
-                        try {
-                        if(rs!=null) rs.close();
-                        if(ps!=null) ps.close();
-                    }catch(Exception e){e.printStackTrace();}
-
             }while(true);
             titles=titles.substring(0,titles.length()-1);
             ratings=ratings.substring(0,ratings.length()-1);
             System.out.println("Final: titles: "+ titles);
             System.out.println("Final: rating: "+ ratings);
 
-            ps_user = conn.prepareStatement("select user_id,age,genderfrom user_main where user_id='"+name+"'");
+            ps_user = conn.prepareStatement("select user_id,age,gender from user_main where user_id='"+name+"'");
             rs_user = ps_user.executeQuery();
             
             i=0;
