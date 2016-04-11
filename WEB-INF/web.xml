@@ -44,6 +44,14 @@
         <servlet-name>InsertServlet</servlet-name>
         <url-pattern>/insertPage</url-pattern>
     </servlet-mapping>
+     <servlet>
+        <servlet-name>ExportServlet</servlet-name>
+        <servlet-class>ExportServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExportServlet</servlet-name>
+        <url-pattern>/exportPage</url-pattern>
+    </servlet-mapping>
    <!-- <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>-->

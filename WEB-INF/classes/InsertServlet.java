@@ -188,7 +188,6 @@ public class InsertServlet extends HttpServlet
                 // If control reaches here, then NO errors in queries. Hence, **Redirecting....
                 
                     Cookie cookey = new Cookie("cType", cType);
-                    cookey.setMaxAge(60*2); 
                     response.addCookie(cookey);
                     response.sendRedirect(request.getContextPath()+"/redirect.html");
                     
