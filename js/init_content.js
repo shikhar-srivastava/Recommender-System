@@ -37,12 +37,11 @@ var insert_check=function() { //check the sign-up status
 var import_titles = function() {
   var tc = getCookie('titles_export');
   var cc = getCookie('export_check');
-
   if(tc!="" && cc!="") {
     var titles = tc.split('|');
     var checks = cc.split('|');
     var k = 1;
-    for(var j=1; j < titles.length(); j++){
+    for(var j=1; j < titles.length; j++){
       if(checks[j]==='1') {
         if(k>3) addField();
         $('#con-field-'+k).attr('value',titles[j]);
@@ -50,6 +49,8 @@ var import_titles = function() {
       }
     }
   }
+  document.cookie = "titles_export=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  //document.cookie = "export_check=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 }
 
 $(document).ready(function() {
@@ -62,5 +63,5 @@ $(document).ready(function() {
     });
   insert_check();
   $('.parallax').parallax();
-  import_titles();
+  if( getCookie("cType")===$('#cType').text()) import_titles();
 });

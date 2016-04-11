@@ -6,19 +6,12 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;  
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;
-// Imports need to be checked
 import java.sql.*;  
 import java.io.*;
-/*Some Documentation:
-        
-            ERRORMESSAGEs in Cookies Types:
-             1) insertfailed:    
-             
-*/
 
 public class ExportServlet extends HttpServlet 
 {  
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException 
     {
         response.setContentType("text/html");  
         System.out.println("In ExportServlet");
@@ -40,7 +33,7 @@ public class ExportServlet extends HttpServlet
             i++;
             if(i>=10)break;
             exports[i]=request.getParameter("export-"+Integer.toString(i+1));
-            if(exports[i]=="")
+            if(exports[i]==null)
             {
             	export_check+="0"+"|";
             }
@@ -53,5 +46,6 @@ public class ExportServlet extends HttpServlet
         Cookie cookey = new Cookie("export_check",export_check);
             cookey.setMaxAge(60*2);       //2 mins
             response.addCookie(cookey); 
+        response.sendRedirect(request.getContextPath()+"/"+cType+".html");
       }
 }
