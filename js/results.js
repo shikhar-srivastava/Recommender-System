@@ -15,7 +15,7 @@ var logout = function() {
 }
 
 var setResult = function(i,t,c) {	//index, title, confidence
-	$('#result-'+i).text(t);
+	$('#result-'+i).text(t).attr("href","https://www.youtube.com/results?search_query="+t.replace(" ","+"));
 	var p = c+'%';
 	$('.confidence-'+i).css('width',p);
 	$('.confidence-'+i).css('background-color','#f3989b');
@@ -34,9 +34,9 @@ var setResults = function() {
 		}
 		document.cookie = "titles=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 		document.cookie = "confidence=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-			Materialize.toast("Awesome bro!!",2000);
+		Materialize.toast("Click on the titles to know more!",2000);
 	}
-	else Materialize.toast("not awesome bro!!",2000);
+	else Materialize.toast("not awesome bro!!",5000);
 }
 
 $(document).ready(function() {
