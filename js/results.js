@@ -15,7 +15,12 @@ var logout = function() {
 }
 
 var setResult = function(i,t,c) {	//index, title, confidence
-	$('#result-'+i).text(t).attr("href","http://www.imdb.com/find?q="+t.replace(" ","+")+"&s=all");
+	var link;
+	var cType = getCookie("cType");
+	if(cType==="movie") link = "http://www.imdb.com/find?q="+t.replace(" ","+")+"&s=all";
+	else if(cType==="music") link = "https://www.youtube.com/results?search_query="+t.replace(" ","+");
+	else if(cType==="book") link = "https://www.google.com/search?tbm=bks&q="+t.replace(" ","+");
+	$('#result-'+i).text(t).attr("href",link);
 	var p = c+'%';
 	$('.confidence-'+i).css('width',p);
 	$('.confidence-'+i).css('background-color','#f3989b');
