@@ -50,8 +50,8 @@ var populateTables = function() {
 	var rc = getCookie("ratings");
 	document.cookie = "pref=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 	document.cookie = "ratings=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-	tc="SomeMovie|SomeOtherMovie|YetAnotherMovie|SomeMovie|SomeOtherMovie|YetAnotherMovie|SomeMovie|SomeOtherMovie|YetAnotherMovie,SomeSong,SomeBook|SomeOtherBook";
-	rc="5|4|5|5|4|5|5|4|5,5,2|5"
+	//tc="SomeMovie|SomeOtherMovie|YetAnotherMovie|SomeMovie|SomeOtherMovie|YetAnotherMovie|SomeMovie|SomeOtherMovie|YetAnotherMovie,SomeSong,SomeBook|SomeOtherBook";
+	//rc="5|4|5|5|4|5|5|4|5,5,2|5"
 	if(tc!=""&&rc!="") {
 		var titles = tc.split(',');
 		var ratings = rc.split(',');
