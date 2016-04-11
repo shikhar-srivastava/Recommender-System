@@ -65,13 +65,6 @@ public class UserServlet extends HttpServlet {
                 ratings=ratings.substring(0,ratings.length()-1);
                 titles+=",";
                 ratings+=",";
-<<<<<<< HEAD
-=======
-                try {
-                    if(rs!=null) rs.close();
-                    if(ps!=null) ps.close();
-                }catch(Exception e){e.printStackTrace();}
->>>>>>> origin/LetsWork
 
             }while(true);
             titles=titles.substring(0,titles.length()-1);
