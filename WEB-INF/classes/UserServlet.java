@@ -8,11 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;  
 
-/*
-    Input : dirty tilte
-    output : clean title
-*/
-
 public class UserServlet extends HttpServlet { 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException 
     {
@@ -22,7 +17,6 @@ public class UserServlet extends HttpServlet {
         cType_list[0]="movie";
         cType_list[1]="music";
         cType_list[2]="book";
-        //cType_list[]={"movie","music","book"};
         Cookie[] cookies= request.getCookies();
         String name=null;
         
@@ -71,6 +65,13 @@ public class UserServlet extends HttpServlet {
                 ratings=ratings.substring(0,ratings.length()-1);
                 titles+=",";
                 ratings+=",";
+<<<<<<< HEAD
+=======
+                try {
+                    if(rs!=null) rs.close();
+                    if(ps!=null) ps.close();
+                }catch(Exception e){e.printStackTrace();}
+>>>>>>> origin/LetsWork
 
             }while(true);
             titles=titles.substring(0,titles.length()-1);
@@ -103,7 +104,7 @@ public class UserServlet extends HttpServlet {
 
         }
             catch(Exception e) {
-                e.printStackTrace(); //LOL
+                e.printStackTrace();
             }
 
          finally {

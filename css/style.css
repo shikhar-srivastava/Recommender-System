@@ -40,9 +40,9 @@ footer.page-footer {
 body {
 	background-repeat: no-repeat;
 	background-size: 100%;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 main {
 flex: 1 0 auto;

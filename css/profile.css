@@ -1,4 +1,6 @@
 body {
+  background-repeat: no-repeat;
+  background-height: 100%;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -6,4 +8,16 @@ body {
 
 main {
   flex: 1 0 auto;
+
+}
+
+footer.page-footer {
+  margin: 0;
+}
+.parallax-container {
+  min-height: 410px;
+  height: auto;
+  width: 100%;
+  padding-top: -10px;
+  margin: 0;
 }

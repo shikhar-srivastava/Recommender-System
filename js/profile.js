@@ -81,4 +81,5 @@ $(document).ready(function() {
 	populateDetails();
 	populateTables();
 	$('table').addClass('striped');
+	$('.parallax').parallax();
 });
