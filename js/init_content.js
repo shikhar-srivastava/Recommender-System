@@ -50,7 +50,24 @@ var import_titles = function() {
     }
   }
   document.cookie = "titles_export=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-  //document.cookie = "export_check=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  document.cookie = "export_check=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+}
+
+var logout = function() {
+  document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  window.location.href="index.html";
+}
+
+var getProfile = function() {
+  var ck_value = getCookie('username');
+  if(ck_value.length>0) { //cookie exists, therefore login must be have been succesful
+    $('#profile-name').text(ck_value);
+  }
+}
+
+function open_popup(form) {
+    window.open('', 'formpopup', 'width=400,height=400,resizeable,scrollbars,status=0,titlebar=0');
+    form.target = 'formpopup';
 }
 
 $(document).ready(function() {
@@ -64,4 +81,5 @@ $(document).ready(function() {
   insert_check();
   $('.parallax').parallax();
   if( getCookie("cType")===$('#cType').text()) import_titles();
+  getProfile();
 });

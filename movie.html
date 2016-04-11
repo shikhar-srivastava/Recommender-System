@@ -12,7 +12,8 @@
   <nav class="blue darken-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo"><i class="material-icons">thumb_up</i></a>
       <ul class="right">
-        <li><a id="profile-name" class="waves-effect" onclick='logout();'>.</a></li>
+        <li><a id="profile-name" class="waves-effect" href="profile.html">.</a></li>
+        <li><a id="logout"class="waves-effect" onclick='logout();'>Logout</a></li>
       </ul>
   </div>
   </nav>
@@ -104,7 +105,7 @@
 
     <div class="section">
       <div class="container">
-        <form action="searchPage" method="get" target="_blank">
+        <form action="searchPage" method="get" onsubmit="open_popup(this)">
           <div class="row white-text">
             <div class="input-field col s8 offset-s1">
               <i class="material-icons prefix white-text">search</i>
@@ -142,6 +143,6 @@
   <script src="js/jquery-2.2.2.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init_content.js"></script>
-  <script src="js/logout.js"></script>
+  <!-- <script src="js/logout.js"></script> -->
   </body>
 </html>
