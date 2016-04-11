@@ -1,5 +1,5 @@
 <form action="recoPage" id="goToReco" method="post">
-<input type="text" name="cType" hidden/>
+<input id="cType" type="text" name="cType" hidden/>
 </form>
 <script src="js/jquery-2.2.2.min.js"></script>
 <script type="text/javascript">
@@ -16,6 +16,7 @@
 
   $(document).ready(function() {
     var c = getCookie("cType");
+    $('#cType').attr('value',c);
     $('#goToReco').submit();
   }); 
 </script>
