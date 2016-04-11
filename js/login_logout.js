@@ -33,13 +33,15 @@ var getCookie = function(cname) {
 }	
 var check_uname = function() {
 	$('#profile-name').addClass('hide');//hide the profile name by default
+	$('#logout').addClass('hide');
 	$('#login-btn').removeClass('hide');
 	var ck_value = getCookie('username');
 	if(ck_value.length>0) { //cookie exists, therefore login must be have been succesful
 		$('#login-btn').addClass('hide');
 		enableLinks();
-		$('#profile-name').text(ck_value + '  (Logout)');
+		$('#profile-name').text(ck_value);
 		$('#profile-name').removeClass('hide');
+		$('#logout').removeClass('hide');
 		Materialize.toast('Welcome ' + ck_value + '!',2000);
 	}
 	//else	window.location.href="index.html";

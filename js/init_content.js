@@ -37,12 +37,11 @@ var insert_check=function() { //check the sign-up status
 var import_titles = function() {
   var tc = getCookie('titles_export');
   var cc = getCookie('export_check');
-
   if(tc!="" && cc!="") {
     var titles = tc.split('|');
     var checks = cc.split('|');
     var k = 1;
-    for(var j=1; j < titles.length(); j++){
+    for(var j=1; j < titles.length; j++){
       if(checks[j]==='1') {
         if(k>3) addField();
         $('#con-field-'+k).attr('value',titles[j]);
@@ -50,6 +49,25 @@ var import_titles = function() {
       }
     }
   }
+  document.cookie = "titles_export=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  document.cookie = "export_check=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+}
+
+var logout = function() {
+  document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  window.location.href="index.html";
+}
+
+var getProfile = function() {
+  var ck_value = getCookie('username');
+  if(ck_value.length>0) { //cookie exists, therefore login must be have been succesful
+    $('#profile-name').text(ck_value);
+  }
+}
+
+function open_popup(form) {
+    window.open('', 'formpopup', 'width=400,height=400,resizeable,scrollbars,status=0,titlebar=0');
+    form.target = 'formpopup';
 }
 
 $(document).ready(function() {
@@ -62,5 +80,6 @@ $(document).ready(function() {
     });
   insert_check();
   $('.parallax').parallax();
-  import_titles();
+  if( getCookie("cType")===$('#cType').text()) import_titles();
+  getProfile();
 });
