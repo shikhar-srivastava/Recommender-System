@@ -46,7 +46,7 @@ public class SearchServlet extends HttpServlet {
             if (i==1) out.println("Sorry no results found.");
         }
         catch(Exception e) {
-            e.printStackTrace(); //lazy
+            e.printStackTrace(); //lazy-> LOL
         }
 
         finally {

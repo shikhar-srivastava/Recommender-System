@@ -52,6 +52,14 @@
         <servlet-name>ExportServlet</servlet-name>
         <url-pattern>/exportPage</url-pattern>
     </servlet-mapping>
+     <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/userPage</url-pattern>
+    </servlet-mapping>
    <!-- <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>-->
