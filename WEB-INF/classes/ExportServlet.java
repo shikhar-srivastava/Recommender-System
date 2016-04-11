@@ -18,7 +18,7 @@ import java.io.*;
 
 public class ExportServlet extends HttpServlet 
 {  
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException 
     {
         response.setContentType("text/html");  
         System.out.println("In ExportServlet");
@@ -40,7 +40,7 @@ public class ExportServlet extends HttpServlet
             i++;
             if(i>=10)break;
             exports[i]=request.getParameter("export-"+Integer.toString(i+1));
-            if(exports[i]=="")
+            if(exports[i]==null)
             {
             	export_check+="0"+"|";
             }
