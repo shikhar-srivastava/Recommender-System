@@ -18,7 +18,7 @@ var getCookie = function(cname) {
 } 
 
 var addField = function() {
-  if(i<=10) {
+  if(i<10) {
     var form = $('#content-form');
     i++;
     $('<div class="row"><div class="input-field col s9"><input type="text" class="grey lighten-5" name="con-field-'+i+'" id="con-field-'+i+'" size=255/></div><div class="input-field col s3"><p class="range-field"><input type="range" style="padding-top: 5px" id="rating-'+i+'" name="rating-'+i+'" min="0" max="5" /></p></div></div>').prependTo(form);
@@ -29,6 +29,13 @@ var addField = function() {
     $('#add-btn').addClass('disabled').removeClass("waves-effect waves-light");
   }
 }
+
+window.onkeydown = function (e) {
+    var code = e.keyCode ? e.keyCode : e.which;
+    if (code === 187) { // '+' key
+        addField();
+    }
+};
 
 $('#add-field').click(function() {
   addField();
@@ -88,4 +95,5 @@ $(document).ready(function() {
   $('.parallax').parallax();
   if( getCookie("cType")===$('#cType').text()) import_titles();
   getProfile();
+  Materialize.toast("Tip : Press '+' to add a new field",5000);
 });

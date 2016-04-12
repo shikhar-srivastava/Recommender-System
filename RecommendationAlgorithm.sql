@@ -14,4 +14,4 @@ with c_user as (select movie_id,rating from user_movie
 					from r_pool group by movie_id)
 	select title,(sum_score/count_score) as final_score 
 	from d_pool natural join movie 
-  order by final_score desc;
+  	order by final_score desc;
