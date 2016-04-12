@@ -33,6 +33,7 @@ var getCookie = function(cname) {
         	if(c.charAt(len1) == '"') len1++;
         	if(c.charAt(len2-1) == '"') len2--;
         	return c.substring(len1,len2);	//remove those pesky quotaions
+        }
     }
     return "";
 }
