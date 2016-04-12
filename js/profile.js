@@ -10,6 +10,7 @@ var getCookie = function(cname) {
         	if(c.charAt(len1) == '"') len1++;
         	if(c.charAt(len2-1) == '"') len2--;
         	return c.substring(len1,len2);	//remove those pesky quotaions
+        }
     }
     return "";
 }
@@ -33,7 +34,6 @@ var logout = function() {
 function addTable(d,col1,col2) {
 	var myTableDiv = document.getElementById(d);
 	var table = document.createElement('TABLE');
-	var tableHead = document.createElement('THEAD');
 	var tableBody = document.createElement('TBODY');
 	
 	table.appendChild(tableBody);
@@ -45,7 +45,7 @@ function addTable(d,col1,col2) {
 	    th.appendChild(document.createTextNode(heading[i]));
 	    tr.appendChild(th);
 	}
-	tableHead.appendChild(tr);
+	tableBody.appendChild(tr);
 	
 	//TABLE ROWS
 	for (i = 0; i < col1.length; i++) {
@@ -66,8 +66,8 @@ var populateTables = function() {
 	var rc = getCookie("ratings");
 	document.cookie = "pref=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 	document.cookie = "ratings=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-	// tc="SomeMovie|SomeOtherMovie|YetAnotherMovie|SomeMovie|SomeOtherMovie|YetAnotherMovie|SomeMovie|SomeOtherMovie|YetAnotherMovie,SomeSong,SomeBook|SomeOtherBook";
-	// rc="5|4|5|5|4|5|5|4|5,5,2|5"
+	// tc="SomeMovie|SomeOtherMovie|YetAnotherMovie|SomeMovie|SomeOtherMovie|YetAnotherMovie|SomeMovie|SomeOtherMovie|YetAnotherMovie|SomeMovie|SomeOtherMovie|YetAnotherMovie|SomeMovie|SomeOtherMovie|YetAnotherMovie|SomeMovie|SomeOtherMovie|YetAnotherMovie,SomeSong,SomeBook|SomeOtherBook|SomeBook|SomeOtherBook|SomeBook|SomeOtherBook|SomeBook|SomeOtherBook|SomeBook|SomeOtherBook|SomeBook|SomeOtherBook|SomeBook|SomeOtherBook|SomeBook|SomeOtherBook";
+	// rc="5|4|5|5|4|5|5|4|5|5|4|5|5|4|5|5|4|5,5,2|5|2|5|2|5|2|5|2|5|2|5|2|5|2|5"
 	if(tc!=""&&rc!="") {
 		var titles = tc.split(',');
 		var ratings = rc.split(',');
@@ -97,7 +97,5 @@ $(document).ready(function() {
 	populateDetails();
 	populateTables();
 	$('table').addClass('striped');
-	$('table').css('background-color','#ffffff');
-	$('table').css('overflow','scroll');
 	$('.parallax').parallax();
 });

@@ -21,3 +21,12 @@ footer.page-footer {
   padding-top: -10px;
   margin: 0;
 }
+
+table {
+  background-color: #ffffff;
+}
+
+#movie-card, #music-card, #book-card {
+  overflow-y: auto;
+  max-height: 470px;
+}
