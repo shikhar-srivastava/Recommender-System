@@ -104,6 +104,7 @@ public class InsertServlet extends HttpServlet
                 while(i<pref_count)
                 {
                     errorMsg=null;
+                    System.out.println(cName[i]);
                     ps = conn.prepareStatement("select count(*) as count_val from "+cType+" where title ='"+cName[i]+"'");
                     rs = ps.executeQuery();
                     System.out.println("After initial Ambiguity check Query Execution"); 
