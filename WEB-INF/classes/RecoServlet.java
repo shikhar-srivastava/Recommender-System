@@ -90,7 +90,7 @@ public class RecoServlet extends HttpServlet
                    		 response.sendRedirect(request.getContextPath()+"/"+cType+".html"); 	
 	                }*/
                     System.out.println("cType: "+cType);
-                ps = conn.prepareStatement("with c_user as (select "+cType+"_id,rating from user_"+cType+" where user_id='"+name+"'),ranks as (select um.user_id,x."+cType+"_id,x.rating*um.rating as rank from c_user x, user_"+cType+" um where um."+cType+"_id in (select "+cType+"_id from c_user)),bonds as (select user_id, sum(rank) as bond from ranks group by user_id), r_pool as (select "+cType+"_id, rating*bond as rating007 from user_"+cType+" natural join bonds where "+cType+"_id not in (select "+cType+"_id from c_user)),d_pool as (select "+cType+"_id,sum(rating007) as final_score from r_pool group by "+cType+"_id) select title,final_score from d_pool natural join "+cType+" order by final_score desc");
+                ps = conn.prepareStatement("with c_user as (select "+cType+"_id,rating from user_"+cType+" where user_id='"+name+"'),ranks as (select um.user_id,x."+cType+"_id,x.rating*um.rating as rank from c_user x, user_"+cType+" um where um."+cType+"_id= x."+cType+"_id),bonds as (select user_id, sum(rank) as bond from ranks group by user_id), r_pool as (select "+cType+"_id, rating*bond as rating007 from user_"+cType+" natural join bonds where "+cType+"_id not in (select "+cType+"_id from c_user)),d_pool as (select "+cType+"_id,sum(rating007) as final_score from r_pool group by "+cType+"_id) select title,final_score from d_pool natural join "+cType+" order by final_score desc");
                 rs = ps.executeQuery();
                 System.out.println("After Query Execution"); 
                 if(rs==null) 
@@ -113,8 +113,13 @@ public class RecoServlet extends HttpServlet
                 Long min,max;
                 //min=max=final_score[0];
                 //i=0;
+                int j =0;
+                while((j<10)&&(final_score[j]!=null)) j++;
+                System.out.println("Number of final results : "+j);
                 max=final_score[0];
+                System.out.println("Highest Score : "+max);
                 min=final_score[9];
+                System.out.println("\"Least Score\" : " +min);
                 /*while(i<10)
                 {
                     if(final_score[i]>max)max=final_score[i];

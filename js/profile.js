@@ -85,7 +85,8 @@ var populateDetails = function() {
 	var dc = getCookie("details");
 	var deets = dc.split(',');
 	$('#userid').text(deets[0]);
-	$('#age').text(deets[1]);
+	if(deets[1]!='null') $('#age').text(deets[1]);
+	else $('#age').text('No age given');
 	$('#gender').text(deets[2]);
 }
 

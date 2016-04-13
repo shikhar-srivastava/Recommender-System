@@ -52,15 +52,17 @@ public class UserServlet extends HttpServlet {
             {
                 i++;
                 if(i>=3)break;
+                int j=0;    //number of results
                 ps = conn.prepareStatement("select title,rating from user_"+cType_list[i]+" natural join "+cType_list[i]+" where user_id='"+name+"'");
                 rs = ps.executeQuery();    
-                while(rs.next())
+                while(rs.next()&&(j<=50))
                 {
                     titles+=rs.getString("title")+"|";
                     ratings+=rs.getString("rating")+"|";
+                    j++;
                 }
-                System.out.println("titles: "+ titles);
-                System.out.println("rating: "+ ratings);
+                //System.out.println("titles: "+ titles);
+                //System.out.println("rating: "+ ratings);
                 titles=titles.substring(0,titles.length()-1);
                 ratings=ratings.substring(0,ratings.length()-1);
                 titles+=",";
