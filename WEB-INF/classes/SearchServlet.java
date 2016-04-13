@@ -35,14 +35,14 @@ public class SearchServlet extends HttpServlet {
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
             //Preparing Query
             if (conn != null)   System.out.println("Connected");
-            else    System.out.println("Couldn't connect to Database");
+            else   System.out.println("Couldn't connect to Database");
             query = query.toLowerCase();
             query.replace(' ','%');
-            ps = conn.prepareStatement("with lw as (select title,lower(title) as l from user_" + cType + " natural join "+ cType+") select distinct(title) from lw where l like '%"+query+"%'");
+            ps = conn.prepareStatement("with lw as (select title,lower(title) as l from " + cType +") select distinct(title) from lw where l like '%"+query+"%'");
             rs = ps.executeQuery();
             int i=1;
             out.println("The results are :");
-            while(rs.next() & ((i++)<=10))	out.println(rs.getString("title"));
+            while(rs.next() && ((i++)<=30))	out.println(rs.getString("title"));
             if (i==1) out.println("Sorry no results found.");
         }
         catch(Exception e) {
