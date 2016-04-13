@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Movies</title>
+  <title>Music</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css\materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css\content.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -23,9 +23,9 @@
         <div class="row">
           <div class="section" id="index-banner">
             <div class="container">
-              <br><h3 class="header center white-text">Movies</h3>
+              <br><h3 class="header center white-text">Music</h3>
               <div class="row center">
-                <h5 class="light center-align">Enter the names of movies that you like</h5>
+                <h5 class="light center-align">Enter the names of music that you like</h5>
               </div>
             </div>
           </div>
@@ -35,7 +35,7 @@
             <div class="card">
               <div class="row center">
                 <div class="col s9">
-                  <h5 class="blue-text center-align">Movie Title</h5>
+                  <h5 class="blue-text center-align">Music Title</h5>
                 </div>
                 <div class="col s3">
                   <h5 class="blue-text center-align">Rating</h5>
@@ -78,7 +78,7 @@
                     <a class="btn red waves-effect left tooltipped" data-position="bottom" data-delay="1000" data-tooltip="Add new field" id="add-field" style="margin-left: 10px"><i class="material-icons white-text">add</i></a>
                     <input type="submit" class="btn right waves-effect waves-blue tooltipped" data-position="bottom" data-delay="700" data-tooltip="Submit when the fields are filled" value="Submit"/>
                   </div>
-                  <input type="text" name="cType" value="movie" hidden/>
+                  <input type="text" name="cType" value="music" hidden/>
                 </form>
                 </div>
               </div>
@@ -90,7 +90,7 @@
                   </div>
 
                   <form action="recoPage" method="post">
-                    <input type="text" name="cType" value="movie" hidden/>
+                    <input type="text" name="cType" value="music" hidden/>
                     <div class="row center">
                     <input type="submit" class="btn waves-effect waves-blue" value="Click Here!"/>
                     </div>
@@ -112,7 +112,7 @@
               <input type="text" name="query" id="search-field" required/>
               <label for="search-field" class="white-text">If you are not sure about what the title is, then search here</label>
             </div>
-            <input type="text" name="cType" value="movie" hidden/>
+            <input type="text" name="cType" value="music" hidden/>
             <div class="input-field col s2">
               <input type="submit" class="btn waves-effect waves-red right blue" value="Search"/>
             </div>
@@ -134,7 +134,7 @@
       <div class="container">
       Made by <a class="red-text text-lighten-3" href="#!">Jawahar and Shikhar</a>
       </div>
-      <a class="hidden" id="cType">movie</a>
+      <a class="hidden" id="cType">music</a>
     </div>
   </footer>
 
