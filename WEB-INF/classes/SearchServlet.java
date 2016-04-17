@@ -38,7 +38,7 @@ public class SearchServlet extends HttpServlet {
             else   System.out.println("Couldn't connect to Database");
             query = query.toLowerCase();
             query.replace(' ','%');
-            ps = conn.prepareStatement("with lw as (select title,lower(title) as l from " + cType +") select distinct(title) from lw where l like '%"+query+"%'");
+            ps = conn.prepareStatement("with lw as (select title,lower(title) as l from " + cType +") select distinct(title) from lw where l like q'$%"+query+"%$'");
             rs = ps.executeQuery();
             int i=1;
             out.println("The results are :");

@@ -3,6 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta name="theme-color" content="#5e42a6">
   <title>Profile</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css\materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -18,7 +19,7 @@
   </div>
 </nav>
 <br>
-<div class="section" style="background-image: url(rsc/sea.jpg); width: 100%; height: 100%">
+<div class="section full-page" style="background-image: url(rsc/sea.jpg); width: 100%; height: 100%">
   <div class="container">
   <div class="container">
     <div class="card">
@@ -61,9 +62,10 @@
 </div>
 <div id="preferences-section">
   <div class="row center">
-   <i class="material-icons blue-text large center-align">movie</i>
+   <i class="material-icons indigo-text large center-align">movie</i>
   </div>
-  <h4 class="center-align">Movie Preferences</h4>
+  <h4 class="center-align col s12 light">Movies<br></h4>
+  <p class="light-blue-text" align='center'>You've clearly got a great choice!<br> We promise you'll love the movies we have in stock! :)</p>
   <div class="parallax-container valign-wrapper">
     <div class="container">
     <br>
@@ -71,12 +73,13 @@
           </div>
     <br>
     </div>
-    <div class="parallax"><img src="rsc/props.jpg"/></div>
+    <div class="parallax full-page"><img src="rsc/props.jpg"/></div>
   </div>
   <div class="row center">
-   <i class="material-icons blue-text large center-align">library_music</i>
+   <i class="material-icons indigo-text large center-align">library_music</i>
   </div>
-  <h4 class="center-align">Music Preferences</h4>
+  <h4 class="center-align col s12 light">Music<br></h4>
+   <p class="light-blue-text" align='center'>Excellent Choice my good Sir'<br> We promise you'll love the tracks we have to share! :)</p>
   <div class="parallax-container valign-wrapper">
     <div class="container" >
     <br>
@@ -84,12 +87,13 @@
           </div>
     <br>
     </div>
-    <div class="parallax"><img src="rsc/danceshow.jpg"/></div>
+    <div class="parallax full-page"><img src="rsc/danceshow.jpg"/></div>
   </div>
   <div class="row center">
-   <i class="material-icons blue-text large center-align">book</i>
+   <i class="material-icons indigo-text large center-align">book</i>
   </div>
-  <h4 class="center-align">Book Preferences</h4>
+  <h4 class="center-align col s12 light">Books <br></h4>
+    <p class="light-blue-text" align='center'>Excellent Choice my good Sir'<br> Keep Reading! :)</p>
   <div class="parallax-container valign-wrapper">
     <div class="container">
     <br>
@@ -98,7 +102,7 @@
         </div>          
     <br>
     </div>
-    <div class="parallax"><img src="rsc/trees.jpg"/></div>
+    <div class="parallax full-page"><img src="rsc/trees.jpg"/></div>
   </div>
 </div>
 <footer class="page-footer red darken-1">
@@ -120,5 +124,10 @@
 <script src="js/materialize.js"></script>
 <script src="js/logout.js"></script>
 <script src="js/profile.js"></script>
+<script>
+    vpw = $(window).width();
+    vph = $(window).height();
+    $('.full-page').height(vph*0.7);
+</script>
 </body>
 </html>

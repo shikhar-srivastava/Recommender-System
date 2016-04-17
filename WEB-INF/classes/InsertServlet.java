@@ -105,7 +105,7 @@ public class InsertServlet extends HttpServlet
                 {
                     errorMsg=null;
                     System.out.println(cName[i]);
-                    ps = conn.prepareStatement("select count(*) as count_val from "+cType+" where title ='"+cName[i]+"'");
+                    ps = conn.prepareStatement("select count(*) as count_val from "+cType+" where title =q'$"+cName[i]+"$'");
                     rs = ps.executeQuery();
                     System.out.println("After initial Ambiguity check Query Execution"); 
                     int count_val=0;
@@ -133,12 +133,12 @@ public class InsertServlet extends HttpServlet
                             cookey.setMaxAge(60); 
                             response.addCookie(cookey);
                             response.sendRedirect(request.getContextPath()+"/"+cType+".html");
-                            
+                            break;
                         }
                         else 
                         {
                         
-                             ps_get= conn.prepareStatement("select distinct("+cType+"_id) as dis_id from "+cType+" where title= '"+cName[i]+"'");
+                             ps_get= conn.prepareStatement("select distinct("+cType+"_id) as dis_id from "+cType+" where title= q'$"+cName[i]+"$'");
                              rs_get = ps_get.executeQuery();    
                              System.out.println("After cType_id Query Execution"); 
                                     while(rs_get.next())
@@ -177,7 +177,16 @@ public class InsertServlet extends HttpServlet
 
                             ins_pref_final=conn.createStatement();
                             System.out.println("Before Final Insert Query..");
-                            String sql= "insert into user_"+cType+" values('"+name+"','"+cType_id+"',"+preferences[i]+")";
+                            String sql="";
+                            if(cType.equals("music"))
+                            {
+                                sql= "insert into user_"+cType+" values('"+cType_id+"','"+name+"',"+preferences[i]+")";
+                            }
+                            else
+                            {
+                                sql= "insert into user_"+cType+" values('"+name+"','"+cType_id+"',"+preferences[i]+")";
+                            }
+                           
                             ins_pref_final.executeUpdate(sql);
                             System.out.println("Insertion Done!!"); 
 
