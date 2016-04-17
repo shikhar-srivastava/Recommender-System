@@ -15,6 +15,12 @@ var getCookie = function(cname) {
         }
     }
     return "";
+}
+
+var reco_check=function() { //check the sign-up status
+  var msg = getCookie('recofailed');
+  Materialize.toast(msg,3000);
+  document.cookie = "reco=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 } 
 
 var addField = function() {
@@ -95,5 +101,6 @@ $(document).ready(function() {
   $('.parallax').parallax();
   if( getCookie("cType")===$('#cType').text()) import_titles();
   getProfile();
+  reco_check();
   Materialize.toast("Tip : Press '+' to add a new field",5000);
 });

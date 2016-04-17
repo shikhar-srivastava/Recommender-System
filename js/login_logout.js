@@ -68,7 +68,7 @@ var signup_check=function() {	//check the sign-up status
 var reco_check=function() {	//check the sign-up status
 	var msg = getCookie('recofailed');
 	Materialize.toast(msg,3000);
-	document.cookie = "signup=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+	document.cookie = "reco=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 }
 
 var login_fail = function() {
