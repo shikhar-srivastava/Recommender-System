@@ -47,3 +47,23 @@ body {
 main {
 flex: 1 0 auto;
 }
+
+.laser-text {
+  color: #000;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  color: #fff;
+}
+
+.laser-text span {
+  display: inline-block;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.laser-text .laser-text-word {
+  position: relative;
+}
+.laser-text .laser-text-letter {
+  opacity: 0;
+}
