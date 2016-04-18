@@ -74,6 +74,7 @@ var populateTables = function() {
 		addTable("movie-card",titles[0].split('|'),ratings[0].split('|'));
 		addTable("music-card",titles[1].split('|'),ratings[1].split('|'));
 		addTable("book-card",titles[2].split('|'),ratings[2].split('|'));
+		Materialize.toast("Scroll down for your preferences",8000);
 	}
 	else {
 		$('#preferences-section').addClass('hide');
