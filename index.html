@@ -25,7 +25,7 @@
   <div class="parallax-container valign-wrapper full-page">
     <div class="container">
       <div class="row center">
-        <h1 class="header center white-text laser-text">Recommendation System</h1>
+        <h1 class="header center white-text">Recommendation System</h1>
         <div class="row center">
           <h5 class="header col s12 light"><br><br>Helps you find things that you'll love.</h5>
         </div>
@@ -151,7 +151,6 @@
   <script src="js/jquery-2.2.2.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/login_logout.js"></script>
-  <script src="js/snabbt.min.js"></script>
   <script>
     $(document).ready(function() {
       $('.modal-trigger').leanModal({
@@ -168,67 +167,6 @@
     vpw = $(window).width();
     vph = $(window).height();
     $('.full-page').height(vph);
-  </script>
-  <script type="text/javascript">
-(function(window, document, snabbt) {
-
-  function splitText(element) {
-    var text = element.textContent;
-    var textParts = text.split(' ');
-
-    element.textContent = '';
-    textParts.forEach(function(textPart, i) {
-      var wordSpan = document.createElement('span');
-      wordSpan.className = 'laser-text-word';
-
-      var chars = textPart.split('');
-      chars.forEach(function(letter, i) {
-        var letterSpan = document.createElement('span');
-        letterSpan.className = 'laser-text-letter';
-        letterSpan.textContent = letter;
-        wordSpan.appendChild(letterSpan);
-      });
-      element.appendChild(wordSpan);
-      if(i !== textParts.length - 1)
-        wordSpan.insertAdjacentHTML('afterEnd', ' ');
-    });
-  }
-
-  function unsplitText(element) {
-    element.textContent = element.textContent;
-  }
-
-  var element = document.getElementsByClassName('laser-text')[0];
-  splitText(element);
-
-  function letterWave() {
-    var letters = document.querySelectorAll('.laser-text-letter');
-
-    for (var i=0; i<letters.length; i++) {
-      letters[i].style.opacity = 0;
-    }
-
-    snabbt(document.querySelectorAll('.laser-text .laser-text-letter'), {
-      fromRotation: function(i) {
-        if(i % 2 === 0)
-          return [-Math.PI/2, 0, 0];
-        return [Math.PI/2, 0, 0];
-      },
-      rotation: [0, 0, 0],
-      delay: function(i) { return i * 30 },
-      duration: 300,
-      perspective: 5,
-      fromOpacity: 0,
-      opacity: 1,
-      easing: 'spring',
-      springConstant: 0.4,
-      springDeceleration: 0.5,
-    });
-  }
-
-  setTimeout(letterWave, 500);
-
-})(window, document, window.snabbt);
   </script>
   </body>
 </html>
