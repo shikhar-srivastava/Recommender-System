@@ -60,4 +60,10 @@ $(document).ready(function() {
 		$('#profile-name').text(ck_value);
 	}
 	setResults();
+	setTimeout(function() {
+	$('#export-btn').snabbt('attention', {
+	  rotation: [0, 0, Math.PI/2],
+	  springConstant: 1.9,
+	  springDeceleration: 0.9
+	});}, 4000);
 });
