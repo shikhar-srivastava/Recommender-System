@@ -60,16 +60,16 @@ var import_titles = function() {
     var titles = tc.split('|');
     var checks = cc.split('|');
     var k = 1;
-    for(var j=1; j < titles.length; j++){
-      if(checks[j]==='1') {
+    for(var j=0; j < titles.length; j++){
+      if(checks[j] == '1') {
         if(k>3) addField();
         $('#con-field-'+k).attr('value',titles[j]);
         k++;
       }
     }
   }
-  document.cookie = "titles_export=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-  document.cookie = "export_check=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  //document.cookie = "titles_export=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  //document.cookie = "export_check=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 }
 
 var logout = function() {
@@ -97,10 +97,10 @@ $(document).ready(function() {
        out_duration: 200,
        starting_top: '10%'
     });
-  insert_check();
   $('.parallax').parallax();
-  if( getCookie("cType")===$('#cType').text()) import_titles();
+  insert_check();
   getProfile();
   reco_check();
+  if( getCookie("cType")===$('#cType').text()) import_titles();
   Materialize.toast("Tip : Press '+' to add a new field",5000);
 });

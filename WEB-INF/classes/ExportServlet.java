@@ -40,7 +40,7 @@ public class ExportServlet extends HttpServlet
             else export_check+="1"+"|";
             System.out.println("export_check status: " +export_check);
         }while(true);
-
+        export_check.substring(0,export_check.length()-1);
         System.out.println("Final export check stats: "+export_check);
 
         Cookie cookey = new Cookie("export_check",export_check);
