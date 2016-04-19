@@ -158,6 +158,8 @@
   <script src="js/materialize.js"></script>
   <script src="js/login_logout.js"></script>
   <script>
+    vph = $(window).height();
+    $('.full-page').height(vph);
     $(document).ready(function() {
       $('.modal-trigger').leanModal({
        dismissible: true,
