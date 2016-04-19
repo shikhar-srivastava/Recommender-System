@@ -22,24 +22,26 @@
   </nav>
   </div>
 
-  <div class="parallax-container valign-wrapper full-page">
+  <div class="parallax-container valign-wrapper hero">
     <div class="container">
       <div class="row center">
         <h1 class="header center white-text">Recommendation System</h1>
-        <div class="row center">
-          <h5 class="header col s12 light"><br><br>Helps you find things that you'll love.</h5>
-        </div>
       </div>
+      <div class="row center">
+        <h5 class="header col s12 light"><br><br>Helps you find things that you'll love.</h5>
+      </div>
+      <div class="row center">
+        <span class="tcon-indicator" aria-label="scroll" aria-hidden="true">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="tcon-svgchevron" viewBox="0 0 30 36">
+            <path class="a3" d="M0,0l15,16L30,0"></path>
+            <path class="a2" d="M0,10l15,16l15-16"></path>
+            <path class="a1" d="M0,20l15,16l15-16"></path>
+          </svg>
+        </span>
+      </div>
+      <div class="parallax"><img src="rsc/uwater.jpg" alt="Unsplashed background img 1"></div>
     </div>
-    <div class="parallax"><img src="rsc/uwater.jpg" alt="Unsplashed background img 1"></div>
-    <span class="tcon-indicator" aria-label="scroll" aria-hidden="true">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="tcon-svgchevron" viewBox="0 0 30 36">
-        <path class="a3" d="M0,0l15,16L30,0"></path>
-        <path class="a2" d="M0,10l15,16l15-16"></path>
-        <path class="a1" d="M0,20l15,16l15-16"></path>
-      </svg>
-    </span>
-
+    
   </div>
   <div class="container">
     <div class="section">
@@ -158,8 +160,6 @@
   <script src="js/materialize.js"></script>
   <script src="js/login_logout.js"></script>
   <script>
-    vph = $(window).height();
-    $('.full-page').height(vph);
     $(document).ready(function() {
       $('.modal-trigger').leanModal({
        dismissible: true,

@@ -30,9 +30,10 @@
   margin: 0;
 }
 
-div.full-page {
-  width:100%;
+.hero {
+  min-height: 90vh !important;
 }
+
 footer.page-footer {
   margin: 0;
 }
