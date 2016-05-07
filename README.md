@@ -1,6 +1,6 @@
 # Project Aims: Recommendation System
 
-Immplementing a Feature-Adaptive Recommendation System, analysing large data sets on preferences, and popular activity of similar users 	pertaining to a given criterion. These currently include Music, Movies and Books preferences of over Half-a-Million users in total.
+Implementing a Feature-Adaptive Recommendation System, analysing large data sets on preferences, and popular activity of similar users 	pertaining to a given criterion. These currently include Music, Movies and Books preferences of over Half-a-Million users in total.
 
 The System User will be asked to provide basic information about his/her preferences in multiple user-feature categories and subsequently provided with recommendations on the same features based on the his/her seed input.
 
