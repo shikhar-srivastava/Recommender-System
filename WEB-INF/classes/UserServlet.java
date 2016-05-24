@@ -23,6 +23,7 @@ public class UserServlet extends HttpServlet {
         for (Cookie ck: cookies) {
             if("username".equals(ck.getName()))
                 name=ck.getValue();
+            if(name=="kinkax")  response.sendRedirect(request.getContextPath()+"/profile.html");
         }
 
         String ratings="";
@@ -98,9 +99,12 @@ public class UserServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath()+"/profile.html");
 
         }
-            catch(Exception e) {
-                e.printStackTrace();
-            }
+        catch(SQLException e) {
+            response.sendRedirect(request.getContextPath()+"/profile.html");
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
 
          finally {
                 try {

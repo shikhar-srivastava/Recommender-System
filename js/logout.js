@@ -9,7 +9,7 @@ var getCookie = function(cname) {
             var len2 = c.length;
             if(c.charAt(len1) == '"') len1++;
             if(c.charAt(len2-1) == '"') len2--;
-            return c.substring(len1,len2);  //remove those pesky quotaions
+            return c.substring(len1,len2);  //remove those pesky quotations
         }
     }
     return "";
@@ -22,9 +22,7 @@ var logout = function() {
 
 var getProfile = function() {
 	var ck_value = getCookie('username');
-	if(ck_value.length>0) { //cookie exists, therefore login must be have been succesful
-		$('#profile-name').text(ck_value + '   (Logout)');
-	}
+	if(ck_value.length>0)  $('#profile-name').text(ck_value);
 }
 $(document).ready(function() {
 	getProfile();
