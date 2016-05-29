@@ -18,3 +18,9 @@ The Algorithm is heavily inspired from the popular document retreival algorithms
 The retreival of the K-Nearest Neighbours of the given System user allows us to answer who the other 'closest' users are to the current user in terms of his/her preferences, and we simply recommend their top rated choices.
 
 The Queries are implemented within the Java Servlets.
+
+
+##  To Do List:
+  1. *SQL Algorithm Updates for K-NN Implementation*
+  2. *Implementation of Classification Model based on Relevance/Non-Relevance of Recommended Feature*
+  3. *To find more features for user-recommendations*
