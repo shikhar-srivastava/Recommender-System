@@ -7,9 +7,11 @@ The System User will be asked to provide basic information about his/her prefere
 The system learns from the user’s observed choices over time, and optimizes its recommendations further.
 
 ## Structure:
-  Client Side & Front End: HTML, XML, JavaScript & CSS.
-  Server-Side: Java Servlet servicing User Requests and accessing Oracle Database using a JDBC Connection. 
-  Database (Currently Local): Oracle 11g XE
+    Client Side & Front End: HTML, XML, JavaScript & CSS.
+    
+    Server-Side: Java Servlet servicing User Requests and accessing Oracle Database using a JDBC Connection. 
+    
+    Database (Currently Local): Oracle 11g XE
   
 ## Machine Learning:
 
@@ -22,5 +24,7 @@ The Queries are implemented within the Java Servlets.
 
 ##  To Do List:
   1. *SQL Algorithm Updates for K-NN Implementation*
+  
   2. *Implementation of Classification Model based on Relevance/Non-Relevance of Recommended Feature*
+  
   3. *To find more features for user-recommendations*
