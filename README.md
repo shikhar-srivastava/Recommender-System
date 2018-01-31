@@ -30,7 +30,7 @@ The Algorithm is heavily inspired from the popular document retreival algorithms
 
     -- SQL Query for recommending movies to a user, 
     
-    	 -- START --
+    -- START --
     with c_user as (select movie_id,rating from user_movie      
                 where user_id=?),       --ratings are in the range: [-5,5]. 
             
@@ -47,11 +47,11 @@ The Algorithm is heavily inspired from the popular document retreival algorithms
 					where movie_id not in
 					(select movie_id from c_user)), -- 'Rating007' weights each movie as the confidence of the recommendation (the user's bond) * it's ratings
 			  
-	     d_pool as (select movie_id,avg(rating007) as final_score   -- Averages the weights for the movies
+	 d_pool as (select movie_id,avg(rating007) as final_score   -- Averages the weights for the movies
 	    				from r_pool group by movie_id)
 	
-	     select title,final_score 
-	     from d_pool natural join movie 
+	 select title,final_score 
+	 from d_pool natural join movie 
          order by final_score desc      -- Orders the Movies from most highly recommended to least recommended movies.
          
-         -- END--
+    -- END --
