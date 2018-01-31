@@ -28,8 +28,9 @@ The Queries are implemented within the Java Servlets.
 
 The Algorithm is heavily inspired from the popular document retreival algorithms used today in ML, but is modified and optimized further, having been written completely in SQL Queries* .
 
-    -- SQL Query for recommending movies to a user.
-    -- START --
+    -- SQL Query for recommending movies to a user, 
+    
+    	 -- START --
     with c_user as (select movie_id,rating from user_movie      
                 where user_id=?),       --ratings are in the range: [-5,5]. 
             
