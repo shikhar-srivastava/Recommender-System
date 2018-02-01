@@ -16,19 +16,28 @@ Server-Side: Java Servlet servicing User Requests and accessing Oracle Database 
 Database (Currently Local): Oracle 11g XE
 
 > Database ER Diagram
-![alt text]()
+
+![index1](img/0.png)
 
 > Index page:  
 
+![index2](img/1.jpg)
+
 > Index Page (Cont. Scroll): 
+
+![index3](img/2.jpg)
 
 > Content Page :
 
+![index4](img/3.jpg)
+
 > Create Account Page :
+
+![index5](img/4.jpg)
 
 > Recommendations Result Page :
 
-
+![index6](img/5.JPG)
   
 ## Machine Learning:
 
