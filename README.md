@@ -25,20 +25,21 @@ Database (Currently Local): Oracle 11g XE
 
 > Index Page (Cont. Scroll): 
 
-![index3](img/2.jpg)
+![index4](img/3.jpg)
 
 > Content Page :
 
-![index4](img/3.jpg)
+![index3](img/2.jpg)
 
 > Create Account Page :
 
-![index5](img/4.jpg)
+![index6](img/5.JPG)
 
 > Recommendations Result Page :
 
-![index6](img/5.JPG)
-  
+![index5](img/4.jpg)
+
+
 ## Machine Learning:
 
 The Algorithm is heavily inspired from the popular document retreival algorithms & the Collaborative Filtering algorithm used today in ML, but is modified and optimized further, having been written completely in SQL Queries* .
