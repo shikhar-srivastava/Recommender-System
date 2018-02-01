@@ -14,6 +14,21 @@ Client Side & Front End: HTML, XML, JavaScript & CSS.
 Server-Side: Java Servlet servicing User Requests and accessing Oracle Database using a JDBC Connection. 
     
 Database (Currently Local): Oracle 11g XE
+
+> Database ER Diagram
+![alt text]()
+
+> Index page:  
+
+> Index Page (Cont. Scroll): 
+
+> Content Page :
+
+> Create Account Page :
+
+> Recommendations Result Page :
+
+
   
 ## Machine Learning:
 
