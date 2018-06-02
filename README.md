@@ -7,39 +7,6 @@
 
 - The system learns from the user’s observed choices over time, and optimizes its recommendations further.
 
-## GUI Structure:
-
-Client Side & Front End: HTML, XML, JavaScript & CSS.
-
-Server-Side: Java Servlet servicing User Requests and accessing Oracle Database using a JDBC Connection. 
-    
-Database (Currently Local): Oracle 11g XE
-
-> Database ER Diagram
-
-![index1](img/0.png)
-
-> Index page:  
-
-![index2](img/1.jpg)
-
-> Index Page (Cont. Scroll): 
-
-![index4](img/3.jpg)
-
-> Content Page :
-
-![index3](img/2.jpg)
-
-> Create Account Page :
-
-![index6](img/5.JPG)
-
-> Recommendations Result Page :
-
-![index5](img/4.jpg)
-
-
 ## Machine Learning:
 
 The Algorithm is heavily inspired from the popular document retreival algorithms & the Collaborative Filtering algorithm used today in ML, but is modified and optimized further, having been written completely in SQL Queries* .
@@ -80,3 +47,38 @@ The Algorithm is heavily inspired from the popular document retreival algorithms
          order by final_score desc      -- Orders the Movies from most highly recommended to least recommended movies.
          
     -- END --
+
+
+## GUI Structure:
+
+Client Side & Front End: HTML, XML, JavaScript & CSS.
+
+Server-Side: Java Servlet servicing User Requests and accessing Oracle Database using a JDBC Connection. 
+    
+Database (Currently Local): Oracle 11g XE
+
+> Database ER Diagram
+
+![index1](img/0.png)
+
+> Index page:  
+
+![index2](img/1.jpg)
+
+> Index Page (Cont. Scroll): 
+
+![index4](img/3.jpg)
+
+> Content Page :
+
+![index3](img/2.jpg)
+
+> Create Account Page :
+
+![index6](img/5.JPG)
+
+> Recommendations Result Page :
+
+![index5](img/4.jpg)
+
+
