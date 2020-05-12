@@ -1,5 +1,5 @@
 #### (2015) Ancient ML project: 
-## Fully SQL Query based Recommendation System 
+## Fully SQL Query based Recommender System 
 Recommender system written entirely in SQL queries using a variation on the collaborative filtering. 
 
 ## SQL Algorithm:
