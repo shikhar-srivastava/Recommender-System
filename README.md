@@ -1,17 +1,17 @@
 #### (2015) Ancient ML project: 
 ## Fully SQL Query based Recommender System 
-Recommender system written entirely in SQL queries using a variation on the collaborative filtering. 
+Recommender system written entirely in SQL queries using a variation on the collaborative filtering approach. 
 
 ## SQL Algorithm:
 
 Written completely in SQL Queries*, the algorithm is an optimized variant of the (once) popular Collaborative Filtering algorithm used originally in ML (Document-retreival/Recommender systems).
 
-This approach retrieves the closest 'neighbors' of the current user based on his/her preferences, and proceeds to do a weighted fetch of the preferences of these neighbors. The idea being that users with similar tastes will have similar rating distributions given the same entity distribution. Simple enough, but very effective written entirely in SQL. 
+This approach retrieves the closest 'neighbors' of the current user based on his/her preferences, and proceeds to do a weighted fetch of their prefences. The idea being that users with similar tastes will have similar rating distributions given the same entity distribution. Simple and effective enough, written entirely in SQL. 
 
-The Queries are implemented within the Java Servlets.
+The Queries were implemented within the Java Servlets.
 
 ## Food for thought:
-This was implemented back in 2015 on the Oracle 11g Database, with a 0.5 Million row database of user preferences. Given little evidence of scalability, and not much time at hand (college course-work), I was sceptical of an all-SQL implementation of ML/Retreival algorithms being a viable approach moving forward for the industry,
+This was implemented back in 2015 on the Oracle 11g Database, with a 0.5 Million-row database of user preferences. Given little evidence of scalability, and not much time at hand (college course-work), I was sceptical of an all-SQL implementation of ML/Retreival algorithms being a viable approach moving forward for the industry,
 
 At the moment however, It would be interesting to see how the pure SQL approaches scales with pipelines using smart-sharding, caching/parallel fetching threads on Hive/Cassandra/etc. (Should maybe try it out as a quick side fun project)
 
