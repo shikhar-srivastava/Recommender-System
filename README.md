@@ -1,26 +1,23 @@
-# Recommendation System
+#### (2015) Ancient ML project: 
+## Fully SQL Query based Recommendation System 
+Recommender system written entirely in SQL queries using a variation on the collaborative filtering. 
 
-#### Feature-Adaptive Recommendation System. 
-#### Analyzing dataset of 500,000 user preferences and popular activity in Music, Movies and Books to make recommendations through a variation on the collaborative filtering, written entirely in SQL Queries.
+## SQL Algorithm:
 
-- The System User will be asked to provide basic information about his/her preferences in multiple user-feature categories and subsequently provided with recommendations on the same features based on the his/her seed input.
+Written completely in SQL Queries*, the algorithm is an optimized variant of the (once) popular Collaborative Filtering algorithm used originally in ML (Document-retreival/Recommender systems).
 
-- The system learns from the user’s observed choices over time, and optimizes its recommendations further.
-
-## Machine Learning:
-
-The Algorithm is heavily inspired from the popular document retreival algorithms & the Collaborative Filtering algorithm used today in ML, but is modified and optimized further, having been written completely in SQL Queries* .
-
-The retreival of the K-Nearest Neighbours of the given System user allows us to answer who the other 'closest' users are to the current user in terms of his/her preferences, and we simply recommend their top rated choices.
+This approach retrieves the closest 'neighbors' of the current user based on his/her preferences, and proceeds to do a weighted fetch of the preferences of these neighbors. The idea being that users with similar tastes will have similar rating distributions given the same entity distribution. Simple enough, but very effective written entirely in SQL. 
 
 The Queries are implemented within the Java Servlets.
 
+## Food for thought:
+This was implemented back in 2015 on the Oracle 11g Database, with a 0.5 Million row database of user preferences. Given little evidence of scalability, and not much time at hand (college course-work), I was sceptical of an all-SQL implementation of ML/Retreival algorithms being a viable approach moving forward for the industry,
 
-## Recommender Algorithm written completely in SQL Query: 
+At the moment however, It would be interesting to see how the pure SQL approaches scales with pipelines using smart-sharding, caching/parallel fetching threads on Hive/Cassandra/etc. (Should maybe try it out as a quick side fun project)
 
-The Algorithm is heavily inspired from the popular document retreival algorithms used today in ML, but is modified and optimized further, having been written completely in SQL Queries* .
+## SQL Query Algorithm: 
 
-    -- SQL Query for recommending movies to a user, 
+    -- SQL Query for recommending for example. entities from the movie table to a user, 
     
     -- START --
     with c_user as (select movie_id,rating from user_movie      
